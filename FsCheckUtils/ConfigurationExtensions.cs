@@ -1,37 +1,11 @@
 ﻿using System;
 using FsCheck;
 using FsCheck.Fluent;
-using Microsoft.FSharp.Collections;
 
 namespace FsCheckUtils
 {
     public static class ConfigurationExtensions
     {
-        public static Configuration ToConfiguration(this Config config)
-        {
-            var configuration = new Configuration
-                {
-                    MaxNbOfTest = config.MaxTest,
-                    MaxNbOfFailedTests = config.MaxFail,
-                    Name = config.Name,
-                    StartSize = config.StartSize,
-                    EndSize = config.EndSize,
-                    Runner = config.Runner
-                };
-
-            var everyFSharpFunc = config.Every;
-            // TODO: could do with a helper to convert an FSharpFunc to a System.Func (especially for a multi-parameter function)
-            Func<int, object[], string> everyFunc = (n, args) => everyFSharpFunc.Invoke(n).Invoke(ListModule.OfSeq(args));
-            configuration.Every = everyFunc;
-
-            var everyShrinkFSharpFunc = config.EveryShrink;
-            // TODO: could do with a helper to convert an FSharpFunc to a System.Func (especially for a multi-parameter function)
-            Func<object[], string> everyShrinkFunc = args => everyShrinkFSharpFunc.Invoke(ListModule.OfSeq(args));
-            configuration.EveryShrink = everyShrinkFunc;
-
-            return configuration;
-        }
-
         public static Configuration WithMaxTest(this Configuration configuration, int maxTest)
         {
             configuration.MaxNbOfTest = maxTest;

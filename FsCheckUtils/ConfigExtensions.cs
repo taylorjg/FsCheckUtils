@@ -1,5 +1,6 @@
 using System;
 using FsCheck;
+using FsCheck.Fluent;
 using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
@@ -170,6 +171,31 @@ namespace FsCheckUtils
                 config.EveryShrink,
                 config.Arbitrary,
                 runner);
+        }
+
+        public static Configuration ToConfiguration(this Config config)
+        {
+            return new Configuration
+                {
+                    MaxNbOfTest = config.MaxTest,
+                    MaxNbOfFailedTests = config.MaxFail,
+                    Name = config.Name,
+                    StartSize = config.StartSize,
+                    EndSize = config.EndSize,
+                    Every = ConvertEveryToFunc(config.Every),
+                    EveryShrink = ConvertEveryShrinkToFunc(config.EveryShrink),
+                    Runner = config.Runner
+                };
+        }
+
+        private static Func<int, object[], string> ConvertEveryToFunc(FSharpFunc<int, FSharpFunc<FSharpList<object>, string>> every)
+        {
+            return (n, args) => every.Invoke(n).Invoke(ListModule.OfSeq(args));
+        }
+
+        private static Func<object[], string> ConvertEveryShrinkToFunc(FSharpFunc<FSharpList<object>, string> everyShrink)
+        {
+            return args => everyShrink.Invoke(ListModule.OfSeq(args));
         }
     }
 }
