@@ -27,7 +27,7 @@ namespace FsCheckUtils
 
         public static Gen<List<T>> Pick<T>(int n, params Gen<T>[] gs)
         {
-            var genIdxs = Pick(n, Enumerable.Range(0, gs.Length).ToArray());
+            var genIdxs = Pick(n, (IReadOnlyCollection<int>) Enumerable.Range(0, gs.Length).ToArray());
             return genIdxs.SelectMany(idxs => Any.SequenceOf(idxs.Select(x => gs[x])));
         }
 
