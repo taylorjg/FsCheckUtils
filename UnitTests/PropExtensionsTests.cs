@@ -3,7 +3,7 @@
 namespace UnitTests
 {
     [TestFixture]
-    internal class PropExtensionsTests
+    public class PropExtensionsTests
     {
     }
 }

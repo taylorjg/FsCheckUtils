@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace UnitTests
 {
     [TestFixture]
-    internal class ConfigExtensionsTests
+    public class ConfigExtensionsTests
     {
         [Test]
         public void Test1()
@@ -13,11 +13,6 @@ namespace UnitTests
             var config = Config.Default
                                .WithMaxTest(1000)
                                .WithName("My Config");
-
-            var configuration = Config.Default
-                                      .ToConfiguration()
-                                      .WithMaxTest(1000)
-                                      .WithName("My Configuration");
         }
     }
 }

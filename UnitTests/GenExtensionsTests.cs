@@ -2,67 +2,72 @@
 using System.Collections.Generic;
 using System.Linq;
 using FsCheck;
-using FsCheck.NUnit;
 using FsCheck.Fluent;
 using FsCheckUtils;
+using NUnit.Framework;
 
 namespace UnitTests
 {
-    using Property = Gen<Rose<Result>>;
+    using PickTuple = Tuple<int, List<int>>;
 
-    [NUnit.Framework.TestFixture]
-    internal class GenExtensionsTests
+    [TestFixture]
+    public class GenExtensionsTests
     {
+        private static readonly Configuration Configuration = Config.VerboseThrowOnFailure.ToConfiguration();
         private const int SizeOfSampleValues = 20;
         private const int NumberOfSampleValues = 100;
 
-        [Property]
-        public Property PickReturnsListOfCorrectLength()
+        [Test]
+        public void PickGeneratesListsOfCorrectLength()
         {
-            return Spec
-                .For(GenPickTestTuple, tuple =>
+            Func<int, List<int>, bool> property = (n, l) =>
                 {
-                    var n = tuple.Item1;
-                    var l = tuple.Item2.ToArray();
                     var genPick = GenExtensions.Pick(n, l);
                     var sample = Gen.sample(SizeOfSampleValues, NumberOfSampleValues, genPick);
                     return sample.All(xs => xs.Count == n);
-                })
-                .Build();
+                };
+
+            Spec
+                .For(GenTuplesForPickTests, Uncurry(property))
+                .Check(Configuration);
         }
 
-        [Property]
-        public Property PickReturnsListsContainingElementsFromTheInputList()
+        [Test]
+        public void PickGeneratesListsContainingOnlyElementsFromTheInputList()
         {
-            return Spec
-                .For(GenPickTestTuple, tuple =>
+            Func<int, List<int>, bool> property = (n, l) =>
                 {
-                    var n = tuple.Item1;
-                    var l = tuple.Item2.ToArray();
                     var genPick = GenExtensions.Pick(n, l);
                     var sample = Gen.sample(SizeOfSampleValues, NumberOfSampleValues, genPick);
-                    return sample.All(xs => xs.All(x => l.Contains(x)));
-                })
-                .Build();
+                    return sample.All(xs => xs.All(l.Contains));
+                };
+
+            Spec
+                .For(GenTuplesForPickTests, Uncurry(property))
+                .Check(Configuration);
         }
 
-        [Property]
-        public Property PickDoesNotKeepReturningTheSameList()
+        [Test]
+        public void PickDoesNotKeepGeneratingTheSameList()
         {
-            return Spec
-                .For(GenPickTestTuple, tuple =>
-                {
-                    var n = tuple.Item1;
-                    var l = tuple.Item2.ToArray();
-                    var genPick = GenExtensions.Pick(n, l);
-                    var sample = Gen.sample(SizeOfSampleValues, NumberOfSampleValues, genPick);
-                    // GenPickTestTuple carefully ensures that n is not < 0 or > size of the list.
-                    // I think that shrinking does not honour these conditions and causes problems.
-                    // So I think we need to turn off shrinking for GenPickTestTuple.
-                    return true;
-                    //return n <= 1 || !sample[0].SequenceEqual(sample[1]);
-                })
-                .Build();
+            Func<int, List<int>, bool> property = (n, l) =>
+            {
+                var genPick = GenExtensions.Pick(n, l);
+                var sample = Gen.sample(SizeOfSampleValues, NumberOfSampleValues, genPick);
+                return sample.Distinct().Count() > (sample.Count() * 0.75);
+            };
+
+            Func<int, List<int>, bool> condition = (n, l) =>
+                l.Count >= 4 && n >= l.Count / 2;
+
+            Func<int, List<int>, IEnumerable<PickTuple>> shrinker = (_, __) =>
+                Enumerable.Empty<PickTuple>();
+
+            Spec
+                .For(GenTuplesForPickTests, Uncurry(property))
+                .When(Uncurry(condition))
+                .Shrink(Uncurry(shrinker))
+                .Check(Configuration);
         }
 
         // Add properties re:
@@ -70,10 +75,14 @@ namespace UnitTests
         // SomeOf
         // SomeOf of Gens
 
-        private static readonly Gen<Tuple<int, List<int>>> GenPickTestTuple =
-            from r in Any.OfType<int>()
+        private static Func<Tuple<T1, T2>, TResult> Uncurry<T1, T2, TResult>(Func<T1, T2, TResult> f)
+        {
+            return tuple => f(tuple.Item1, tuple.Item2);
+        }
+
+        private static readonly Gen<PickTuple> GenTuplesForPickTests =
             from l in Any.OfType<int>().MakeList()
-            let n = Math.Abs(r) % (l.Count + 1)
+            from n in Any.IntBetween(0, l.Count)
             select Tuple.Create(n, l);
     }
 }
