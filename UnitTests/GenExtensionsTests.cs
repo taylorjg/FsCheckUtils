@@ -75,6 +75,62 @@ namespace UnitTests
         // SomeOf
         // SomeOf of Gens
 
+        [Test]
+        public void NumChar()
+        {
+            Spec
+                .For(GenExtensions.NumChar(), c => Char.IsDigit(c))
+                .Check(Configuration);
+        }
+
+        [Test]
+        public void AlphaUpperChar()
+        {
+            Spec
+                .For(GenExtensions.AlphaUpperChar(), c => Char.IsLetter(c) && Char.IsUpper(c))
+                .Check(Configuration);
+        }
+
+        [Test]
+        public void AlphaLowerChar()
+        {
+            Spec
+                .For(GenExtensions.AlphaLowerChar(), c => Char.IsLetter(c) && Char.IsLower(c))
+                .Check(Configuration);
+        }
+
+        [Test]
+        public void AlphaChar()
+        {
+            Spec
+                .For(GenExtensions.AlphaChar(), c => Char.IsLetter(c))
+                .Check(Configuration);
+        }
+
+        [Test]
+        public void AlphaNumChar()
+        {
+            Spec
+                .For(GenExtensions.AlphaNumChar(), c => Char.IsLetterOrDigit(c))
+                .Check(Configuration);
+        }
+
+        [Test]
+        public void NumStr()
+        {
+            Spec
+                .For(GenExtensions.NumStr(), s => s.All(Char.IsDigit))
+                .Check(Configuration);
+        }
+
+        [Test]
+        public void AlphaStr()
+        {
+            Spec
+                .For(GenExtensions.AlphaStr(), s => s.All(Char.IsLetterOrDigit))
+                .Check(Configuration);
+        }
+
         private static Func<Tuple<T1, T2>, TResult> Uncurry<T1, T2, TResult>(Func<T1, T2, TResult> f)
         {
             return tuple => f(tuple.Item1, tuple.Item2);
