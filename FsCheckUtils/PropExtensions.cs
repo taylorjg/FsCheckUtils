@@ -71,7 +71,7 @@ namespace FsCheckUtils
         /// <typeparam name="TTestable">Type of the property.</typeparam>
         /// <param name="condition">The condition which, if true, implies that the property should be tested.</param>
         /// <param name="assertion">The property to test if the condition is true.</param>
-        /// <returns></returns>
+        /// <returns>A property that does or doesn't test the assertion depending on the condition</returns>
         public static Gen<Rose<Result>> Implies<TTestable>(bool condition, TTestable assertion)
         {
             return PropOperators.op_EqualsEqualsGreater(condition, assertion);

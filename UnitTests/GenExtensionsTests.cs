@@ -130,6 +130,18 @@ namespace UnitTests
                 .Check(Configuration);
         }
 
+        [Test]
+        public void Guid()
+        {
+            Spec
+                .For(GenExtensions.Guid(), g =>
+                    {
+                        var s = g.ToString("N");
+                        return s[12] == '4' && s[16] >= '8' && s[16] <= 'b';
+                    })
+                .Check(Configuration);
+        }
+
         private static Func<Tuple<T1, T2>, TResult> Uncurry<T1, T2, TResult>(Func<T1, T2, TResult> f)
         {
             return tuple => f(tuple.Item1, tuple.Item2);

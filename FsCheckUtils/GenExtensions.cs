@@ -188,5 +188,33 @@ namespace FsCheckUtils
                    where s.All(Char.IsDigit)
                    select s;
         }
+
+        /// <summary>
+        /// Generates a version 4 (random) UUID.
+        /// </summary>
+        /// <returns>A generator that generates a version 4 (random) UUID.</returns>
+        public static Gen<Guid> Guid()
+        {
+            // http://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_.28random.29
+
+            return from l1Upper in Gen.choose(0, int.MaxValue)
+                   from l1Lower in Gen.choose(0, int.MaxValue)
+                   from l2Upper in Gen.choose(0, int.MaxValue)
+                   from l2Lower in Gen.choose(0, int.MaxValue)
+                   let l1 = ((long) l1Upper << 32) + l1Lower
+                   let l2 = ((long) l2Upper << 32) + l2Lower
+                   from y in Gen.elements(new[] {'8', '9', 'a', 'b'})
+                   select MakeGuidFromBits(l1, l2, y);
+        }
+
+        private static Guid MakeGuidFromBits(long l1, long l2, char y)
+        {
+            var s1 = l1.ToString("X16") + l2.ToString("X16");
+            var chars = s1.ToCharArray();
+            chars[12] = '4';
+            chars[16] = y;
+            var s2 = new string(chars);
+            return System.Guid.Parse(s2);
+        }
     }
 }
