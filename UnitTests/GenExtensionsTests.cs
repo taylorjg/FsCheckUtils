@@ -8,7 +8,7 @@ using NUnit.Framework;
 
 namespace UnitTests
 {
-    using PickTuple = Tuple<int, List<int>>;
+    using PickTuple = Tuple<int, int[]>;
 
     [TestFixture]
     public class GenExtensionsTests
@@ -18,62 +18,61 @@ namespace UnitTests
         private const int NumberOfSampleValues = 100;
 
         [Test]
-        public void PickGeneratesListsOfCorrectLength()
+        public void PickValuesGeneratesListsOfCorrectLength()
         {
-            Func<int, List<int>, bool> property = (n, l) =>
+            Func<int, int[], bool> property = (n, l) =>
                 {
-                    var genPick = GenExtensions.Pick(n, l);
+                    var genPick = GenExtensions.PickValues(n, l);
                     var sample = Gen.sample(SizeOfSampleValues, NumberOfSampleValues, genPick);
                     return sample.All(xs => xs.Count == n);
                 };
 
             Spec
-                .For(GenTuplesForPickTests, Uncurry(property))
+                .For(GenTuplesForPickValuesTests, Uncurry(property))
                 .Check(Configuration);
         }
 
         [Test]
-        public void PickGeneratesListsContainingOnlyElementsFromTheInputList()
+        public void PickValuesGeneratesListsContainingOnlyElementsFromTheInputList()
         {
-            Func<int, List<int>, bool> property = (n, l) =>
+            Func<int, int[], bool> property = (n, l) =>
                 {
-                    var genPick = GenExtensions.Pick(n, l);
+                    var genPick = GenExtensions.PickValues(n, l);
                     var sample = Gen.sample(SizeOfSampleValues, NumberOfSampleValues, genPick);
                     return sample.All(xs => xs.All(l.Contains));
                 };
 
             Spec
-                .For(GenTuplesForPickTests, Uncurry(property))
+                .For(GenTuplesForPickValuesTests, Uncurry(property))
                 .Check(Configuration);
         }
 
         [Test]
-        public void PickDoesNotKeepGeneratingTheSameList()
+        public void PickValuesDoesNotKeepGeneratingTheSameList()
         {
-            Func<int, List<int>, bool> property = (n, l) =>
+            Func<int, int[], bool> property = (n, l) =>
             {
-                var genPick = GenExtensions.Pick(n, l);
+                var genPick = GenExtensions.PickValues(n, l);
                 var sample = Gen.sample(SizeOfSampleValues, NumberOfSampleValues, genPick);
                 return sample.Distinct().Count() > (sample.Count() * 0.75);
             };
 
-            Func<int, List<int>, bool> condition = (n, l) =>
-                l.Count >= 4 && n >= l.Count / 2;
+            Func<int, int[], bool> condition = (n, l) => l.Length >= 4 && n >= l.Length / 2;
 
-            Func<int, List<int>, IEnumerable<PickTuple>> shrinker = (_, __) =>
+            Func<int, int[], IEnumerable<PickTuple>> shrinker = (_, __) =>
                 Enumerable.Empty<PickTuple>();
 
             Spec
-                .For(GenTuplesForPickTests, Uncurry(property))
+                .For(GenTuplesForPickValuesTests, Uncurry(property))
                 .When(Uncurry(condition))
                 .Shrink(Uncurry(shrinker))
                 .Check(Configuration);
         }
 
-        // Add properties re:
-        // Pick of Gens
-        // SomeOf
-        // SomeOf of Gens
+        // Add more tests re:
+        // PickGenerators
+        // SomeOfValues
+        // SomeOfGenerators
 
         [Test]
         public void NumChar()
@@ -136,9 +135,9 @@ namespace UnitTests
             return tuple => f(tuple.Item1, tuple.Item2);
         }
 
-        private static readonly Gen<PickTuple> GenTuplesForPickTests =
+        private static readonly Gen<PickTuple> GenTuplesForPickValuesTests =
             from l in Any.OfType<int>().MakeList()
             from n in Any.IntBetween(0, l.Count)
-            select Tuple.Create(n, l);
+            select Tuple.Create(n, l.ToArray());
     }
 }
