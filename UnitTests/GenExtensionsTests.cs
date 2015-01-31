@@ -75,6 +75,120 @@ namespace UnitTests
         // SomeOfGenerators
 
         [Test]
+        public void Zip2()
+        {
+            var g1 = Gen.constant(1);
+            var g2 = Gen.constant(2);
+            var gen = GenExtensions.Zip(g1, g2);
+
+            Spec
+                .For(gen, tuple =>
+                    tuple.Item1 == 1 &&
+                    tuple.Item2 == 2)
+                .Check(Configuration);
+        }
+
+        [Test]
+        public void Zip3()
+        {
+            var g1 = Gen.constant(1);
+            var g2 = Gen.constant(2);
+            var g3 = Gen.constant(3);
+            var gen = GenExtensions.Zip(g1, g2, g3);
+
+            Spec
+                .For(gen, tuple =>
+                    tuple.Item1 == 1 &&
+                    tuple.Item2 == 2 &&
+                    tuple.Item3 == 3)
+                .Check(Configuration);
+        }
+
+        [Test]
+        public void Zip4()
+        {
+            var g1 = Gen.constant(1);
+            var g2 = Gen.constant(2);
+            var g3 = Gen.constant(3);
+            var g4 = Gen.constant(4);
+            var gen = GenExtensions.Zip(g1, g2, g3, g4);
+
+            Spec
+                .For(gen, tuple =>
+                    tuple.Item1 == 1 &&
+                    tuple.Item2 == 2 &&
+                    tuple.Item3 == 3 &&
+                    tuple.Item4 == 4)
+                .Check(Configuration);
+        }
+
+        [Test]
+        public void Zip5()
+        {
+            var g1 = Gen.constant(1);
+            var g2 = Gen.constant(2);
+            var g3 = Gen.constant(3);
+            var g4 = Gen.constant(4);
+            var g5 = Gen.constant(5);
+            var gen = GenExtensions.Zip(g1, g2, g3, g4, g5);
+
+            Spec
+                .For(gen, tuple =>
+                    tuple.Item1 == 1 &&
+                    tuple.Item2 == 2 &&
+                    tuple.Item3 == 3 &&
+                    tuple.Item4 == 4 &&
+                    tuple.Item5 == 5)
+                .Check(Configuration);
+        }
+
+        [Test]
+        public void Zip6()
+        {
+            var g1 = Gen.constant(1);
+            var g2 = Gen.constant(2);
+            var g3 = Gen.constant(3);
+            var g4 = Gen.constant(4);
+            var g5 = Gen.constant(5);
+            var g6 = Gen.constant(6);
+            var gen = GenExtensions.Zip(g1, g2, g3, g4, g5, g6);
+
+            Spec
+                .For(gen, tuple =>
+                    tuple.Item1 == 1 &&
+                    tuple.Item2 == 2 &&
+                    tuple.Item3 == 3 &&
+                    tuple.Item4 == 4 &&
+                    tuple.Item5 == 5 &&
+                    tuple.Item6 == 6)
+                .Check(Configuration);
+        }
+
+        [Test]
+        public void Zip7()
+        {
+            var g1 = Gen.constant(1);
+            var g2 = Gen.constant(2);
+            var g3 = Gen.constant(3);
+            var g4 = Gen.constant(4);
+            var g5 = Gen.constant(5);
+            var g6 = Gen.constant(6);
+            var g7 = Gen.constant(7);
+            var gen = GenExtensions.Zip(g1, g2, g3, g4, g5, g6, g7);
+
+            Spec
+                .For(gen, tuple =>
+                    tuple.Item1 == 1 &&
+                    tuple.Item2 == 2 &&
+                    tuple.Item3 == 3 &&
+                    tuple.Item4 == 4 &&
+                    tuple.Item5 == 5 &&
+                    tuple.Item6 == 6 &&
+                    tuple.Item7 == 7)
+                .Check(Configuration);
+        }
+
+        [Test]
         public void NumChar()
         {
             Spec
