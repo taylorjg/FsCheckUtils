@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Jonathan Taylor</authors>
+    <owners>Jonathan Taylor</owners>
+    <licenseUrl>https://github.com/taylorjg/FsCheckUtils/blob/master/license.txt</licenseUrl>
+    <projectUrl>https://github.com/taylorjg/FsCheckUtils</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright 2015</copyright>
+    <tags>FsCheck ScalaCheck QuickCheck C#</tags>
+  </metadata>
+</package>
