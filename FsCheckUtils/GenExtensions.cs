@@ -6,6 +6,9 @@ using FsCheck.Fluent;
 
 namespace FsCheckUtils
 {
+    /// <summary>
+    /// Additional combinators inspired by ScalaCheck.
+    /// </summary>
     public static class GenExtensions
     {
         /// <summary>

@@ -3,6 +3,9 @@ using FsCheck;
 
 namespace FsCheckUtils
 {
+    /// <summary>
+    /// Wrappers around FsCheck's PropOperators.
+    /// </summary>
     public static class PropExtensions
     {
         /// <summary>
