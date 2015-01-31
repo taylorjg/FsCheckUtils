@@ -1,5 +1,5 @@
 
-## Provides some convenience extension methods
+## Convenience extension methods
 
 ### Config
 
@@ -60,7 +60,7 @@ var configuration = Config.Default
                             .WithName("My Configuration");
 ```
 
-## Provides wrappers around FsCheck operators
+## Wrappers around FsCheck operators
 
 FsCheck's Prop operators e.g. <code>.&.</code>, are visible to C# as static methods with names that begin with <code>op&#95;</code> and have symbol names in place of the symbols themselves e.g. <code>op&#95;DotAmpDot</code>. It is possible to call these static methods from C# (as a normal method call - not as an infix operator). However, the names are very odd and ReSharper thinks they are errors (even in ReSharper 9.0 Update 1 - see the screenshot below). For these reasons, FsCheckUtils
 provides wrappers around these operators.
@@ -74,25 +74,25 @@ provides wrappers around these operators.
 * PropExtensions.Label (wraps |@)
 * PropExtensions.Implies (wraps ==>)
 
-## Provides functionality that is in ScalaCheck but not in FsCheck
+## Generators that are in ScalaCheck but not in FsCheck
 
-* GenExtensions.PickValues
-* GenExtensions.PickGenerators
-* GenExtensions.SomeOfValues
-* GenExtensions.SomeOfGenerators
-* GenExtensions.NumChar
-* GenExtensions.AlphaUpperChar
-* GenExtensions.AlphaLowerChar
-* GenExtensions.AlphaChar
-* GenExtensions.AlphaNumChar
-* GenExtensions.AlphaStr
-* GenExtensions.NumStr
-* GenExtensions.Guid
+* GenExtensions.PickValues (Gen.pick)
+* GenExtensions.PickGenerators (Gen.pick)
+* GenExtensions.SomeOfValues (Gen.someOf)
+* GenExtensions.SomeOfGenerators (Gen.someOf)
+* GenExtensions.NumChar (Gen.numChar)
+* GenExtensions.AlphaUpperChar (Gen.alphaUpperChar)
+* GenExtensions.AlphaLowerChar (Gen.alphaLowerChar)
+* GenExtensions.AlphaChar (Gen.alphaChar)
+* GenExtensions.AlphaNumChar (Gen.alphaNumChar)
+* GenExtensions.AlphaStr (Gen.alphaStr)
+* GenExtensions.NumStr (Gen.numStr)
+* GenExtensions.Guid (Gen.uuid)
 
 ## TODO
 
-* identifier
-* zip (arity 2 to 9)
+* Gen.identifier
+* Gen.zip (arity 2 to 9)
     * Generates Tuple2 from g1/g2, Tuple3 from g1/g2/g3, etc
-* retryUntil
-* containerOf / Buildable
+* Gen.retryUntil
+* Gen.containerOf / Buildable
