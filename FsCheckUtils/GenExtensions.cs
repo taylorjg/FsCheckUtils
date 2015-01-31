@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using FsCheck;
 using FsCheck.Fluent;
 
@@ -131,96 +130,6 @@ namespace FsCheckUtils
         public static Gen<T> RetryUntil<T>(this Gen<T> gen, Func<T, bool> p)
         {
             return gen.SelectMany(t => p(t) ? Gen.constant(t).Where(p) : gen.RetryUntil(p));
-        }
-
-        /// <summary>
-        /// Generates a numerical character.
-        /// </summary>
-        /// <returns>A generator that generates a numerical character.</returns>
-        public static Gen<char> NumChar()
-        {
-            return from n in Gen.choose('0', '9')
-                   select Convert.ToChar(n);
-        }
-
-        /// <summary>
-        /// Generates an upper-case alpha character.
-        /// </summary>
-        /// <returns>A generator that generates an upper-case alpha character.</returns>
-        public static Gen<char> AlphaUpperChar()
-        {
-            return from n in Gen.choose('A', 'Z')
-                   select Convert.ToChar(n);
-        }
-
-        /// <summary>
-        /// Generates a lower-case alpha character.
-        /// </summary>
-        /// <returns>A generator that generates a lower-case alpha character.</returns>
-        public static Gen<char> AlphaLowerChar()
-        {
-            return from n in Gen.choose('a', 'z')
-                   select Convert.ToChar(n);
-        }
-
-        /// <summary>
-        /// Generates an alpha character.
-        /// </summary>
-        /// <returns>A generator that generates an alpha character.</returns>
-        public static Gen<char> AlphaChar()
-        {
-            return Any.WeighedGeneratorIn(
-                new WeightAndValue<Gen<char>>(1, AlphaUpperChar()),
-                new WeightAndValue<Gen<char>>(9, AlphaLowerChar()));
-        }
-
-        /// <summary>
-        /// Generates an alphanumerical character.
-        /// </summary>
-        /// <returns>A generator that generates an alphanumerical character.</returns>
-        public static Gen<char> AlphaNumChar()
-        {
-            return Any.WeighedGeneratorIn(
-                new WeightAndValue<Gen<char>>(1, NumChar()),
-                new WeightAndValue<Gen<char>>(9, AlphaChar()));
-        }
-
-        /// <summary>
-        /// Generates a string of alpha characters.
-        /// </summary>
-        /// <returns>A generator that generates a string of alpha characters.</returns>
-        public static Gen<string> AlphaStr()
-        {
-            return from cs in AlphaChar().MakeList()
-                   let s = new string(cs.ToArray())
-                   where s.All(Char.IsLetter)
-                   select s;
-        }
-
-        /// <summary>
-        /// Generates a string of digits.
-        /// </summary>
-        /// <returns>A generator that generates a string of digits.</returns>
-        public static Gen<string> NumStr()
-        {
-            return from cs in NumChar().MakeList()
-                   let s = new string(cs.ToArray())
-                   where s.All(Char.IsDigit)
-                   select s;
-        }
-
-        /// <summary>
-        /// Generates a string that starts with a lower-case alpha character,
-        /// and only contains alphanumerical characters.
-        /// </summary>
-        /// <returns>A generator that generates an identifier.</returns>
-        public static Gen<string> Identifier()
-        {
-            return from c in AlphaLowerChar()
-                   from cs in AlphaNumChar().MakeList()
-                   let s = new string(new[] { c }.Concat(cs).ToArray())
-                   where s.All(Char.IsLetterOrDigit)
-                   select s;
         }
 
         /// <summary>
@@ -371,11 +280,127 @@ namespace FsCheckUtils
         }
 
         /// <summary>
+        /// Generates a numerical character.
+        /// </summary>
+        /// <returns>A generator that generates a numerical character.</returns>
+        public static Gen<char> NumChar
+        {
+            get
+            {
+                return from n in Gen.choose('0', '9')
+                       select Convert.ToChar(n);
+            }
+        }
+
+        /// <summary>
+        /// Generates an upper-case alpha character.
+        /// </summary>
+        /// <returns>A generator that generates an upper-case alpha character.</returns>
+        public static Gen<char> AlphaUpperChar
+        {
+            get
+            {
+                return from n in Gen.choose('A', 'Z')
+                       select Convert.ToChar(n);
+            }
+        }
+
+        /// <summary>
+        /// Generates a lower-case alpha character.
+        /// </summary>
+        /// <returns>A generator that generates a lower-case alpha character.</returns>
+        public static Gen<char> AlphaLowerChar
+        {
+            get
+            {
+                return from n in Gen.choose('a', 'z')
+                       select Convert.ToChar(n);
+            }
+        }
+
+        /// <summary>
+        /// Generates an alpha character.
+        /// </summary>
+        /// <returns>A generator that generates an alpha character.</returns>
+        public static Gen<char> AlphaChar
+        {
+            get
+            {
+                return Any.WeighedGeneratorIn(
+                    new WeightAndValue<Gen<char>>(1, AlphaUpperChar),
+                    new WeightAndValue<Gen<char>>(9, AlphaLowerChar));
+            }
+        }
+
+        /// <summary>
+        /// Generates an alphanumerical character.
+        /// </summary>
+        /// <returns>A generator that generates an alphanumerical character.</returns>
+        public static Gen<char> AlphaNumChar
+        {
+            get
+            {
+                return Any.WeighedGeneratorIn(
+                    new WeightAndValue<Gen<char>>(1, NumChar),
+                    new WeightAndValue<Gen<char>>(9, AlphaChar));
+            }
+        }
+
+        /// <summary>
+        /// Generates a string of alpha characters.
+        /// </summary>
+        /// <returns>A generator that generates a string of alpha characters.</returns>
+        public static Gen<string> AlphaStr
+        {
+            get
+            {
+                return from cs in AlphaChar.MakeList()
+                       let s = new string(cs.ToArray())
+                       where s.All(Char.IsLetter)
+                       select s;
+            }
+        }
+
+        /// <summary>
+        /// Generates a string of digits.
+        /// </summary>
+        /// <returns>A generator that generates a string of digits.</returns>
+        public static Gen<string> NumStr
+        {
+            get
+            {
+                return from cs in NumChar.MakeList()
+                       let s = new string(cs.ToArray())
+                       where s.All(Char.IsDigit)
+                       select s;
+            }
+        }
+
+        /// <summary>
+        /// Generates a string that starts with a lower-case alpha character,
+        /// and only contains alphanumerical characters.
+        /// </summary>
+        /// <returns>A generator that generates an identifier.</returns>
+        public static Gen<string> Identifier
+        {
+            get
+            {
+                return from c in AlphaLowerChar
+                       from cs in AlphaNumChar.MakeList()
+                       let s = new string(new[] { c }.Concat(cs).ToArray())
+                       where s.All(Char.IsLetterOrDigit)
+                       select s;
+            }
+        }
+
+        /// <summary>
         /// Generates a version 4 (random) UUID.
         /// </summary>
         /// <returns>A generator that generates a version 4 (random) UUID.</returns>
-        public static Gen<Guid> Guid()
+        public static Gen<Guid> Guid
         {
+            get
+            {
             // http://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_.28random.29
 
             return from l1Upper in Gen.choose(0, int.MaxValue)
@@ -386,6 +411,7 @@ namespace FsCheckUtils
                    let l2 = ((long) l2Upper << 32) + l2Lower
                    from y in Gen.elements(new[] {'8', '9', 'a', 'b'})
                    select MakeGuidFromBits(l1, l2, y);
+            }
         }
 
         private static Guid MakeGuidFromBits(long l1, long l2, char y)

@@ -66,7 +66,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigurationExtensionsTests.cs" />
-    <Compile Include="FsCheckAddin.cs" />
     <Compile Include="GenExtensionsTests.cs" />
     <Compile Include="MyRunner.cs" />
     <Compile Include="PropExtensionsTests.cs" />

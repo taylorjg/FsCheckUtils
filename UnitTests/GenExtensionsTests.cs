@@ -78,7 +78,7 @@ namespace UnitTests
         public void NumChar()
         {
             Spec
-                .For(GenExtensions.NumChar(), c => Char.IsDigit(c))
+                .For(GenExtensions.NumChar, c => Char.IsDigit(c))
                 .Check(Configuration);
         }
 
@@ -86,7 +86,7 @@ namespace UnitTests
         public void AlphaUpperChar()
         {
             Spec
-                .For(GenExtensions.AlphaUpperChar(), c => Char.IsLetter(c) && Char.IsUpper(c))
+                .For(GenExtensions.AlphaUpperChar, c => Char.IsLetter(c) && Char.IsUpper(c))
                 .Check(Configuration);
         }
 
@@ -94,7 +94,7 @@ namespace UnitTests
         public void AlphaLowerChar()
         {
             Spec
-                .For(GenExtensions.AlphaLowerChar(), c => Char.IsLetter(c) && Char.IsLower(c))
+                .For(GenExtensions.AlphaLowerChar, c => Char.IsLetter(c) && Char.IsLower(c))
                 .Check(Configuration);
         }
 
@@ -102,7 +102,7 @@ namespace UnitTests
         public void AlphaChar()
         {
             Spec
-                .For(GenExtensions.AlphaChar(), c => Char.IsLetter(c))
+                .For(GenExtensions.AlphaChar, c => Char.IsLetter(c))
                 .Check(Configuration);
         }
 
@@ -110,7 +110,7 @@ namespace UnitTests
         public void AlphaNumChar()
         {
             Spec
-                .For(GenExtensions.AlphaNumChar(), c => Char.IsLetterOrDigit(c))
+                .For(GenExtensions.AlphaNumChar, c => Char.IsLetterOrDigit(c))
                 .Check(Configuration);
         }
 
@@ -118,7 +118,7 @@ namespace UnitTests
         public void NumStr()
         {
             Spec
-                .For(GenExtensions.NumStr(), s => s.All(Char.IsDigit))
+                .For(GenExtensions.NumStr, s => s.All(Char.IsDigit))
                 .Check(Configuration);
         }
 
@@ -126,7 +126,7 @@ namespace UnitTests
         public void AlphaStr()
         {
             Spec
-                .For(GenExtensions.AlphaStr(), s => s.All(Char.IsLetterOrDigit))
+                .For(GenExtensions.AlphaStr, s => s.All(Char.IsLetterOrDigit))
                 .Check(Configuration);
         }
 
@@ -134,7 +134,7 @@ namespace UnitTests
         public void Guid()
         {
             Spec
-                .For(GenExtensions.Guid(), g =>
+                .For(GenExtensions.Guid, g =>
                     {
                         var s = g.ToString("N");
                         return s[12] == '4' && s[16] >= '8' && s[16] <= 'b';
