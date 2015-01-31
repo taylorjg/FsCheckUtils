@@ -98,7 +98,6 @@ provides wrappers around these operators.
 
 ## TODO
 
-* Make FsCheckUtils available as a NuGet package
 * Generate MSDN-style documentation from the XML docs
 * Make the documentation available in a gh-pages branch of this repo
 * Ensure all public methods are covered by unit tests
