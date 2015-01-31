@@ -97,5 +97,5 @@ provides wrappers around these operators.
 
 ## TODO
 
-* Gen.zip (overloads arity 2 to 9) - generates Tuple2 from g1/g2, Tuple3 from g1/g2/g3, etc
+* Gen.zip (overloads with arity from 2 to 9) - generate Tuple2 from g1/g2, Tuple3 from g1/g2/g3, etc
 * Make FsCheckUtils available as a NuGet package
