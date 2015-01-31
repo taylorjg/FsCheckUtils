@@ -62,8 +62,10 @@ var configuration = Config.Default
 
 ## Provides wrappers around FsCheck operators
 
-FsCheck's Prop operators e.g. <code>.&.</code>, are visible to C# as static methods with names that begin with <code>op&#95;</code> and have symbol names in place of the symbols themselves e.g. <code>op&#95;DotAmpDot</code>. It is possible to call these static methods from C# (as a normal method call - not as an infix operator). However, the names are very odd and ReSharper thinks they are errors (even in ReSharper 9 when I tried it recently). For these reasons, FsCheckUtils
+FsCheck's Prop operators e.g. <code>.&.</code>, are visible to C# as static methods with names that begin with <code>op&#95;</code> and have symbol names in place of the symbols themselves e.g. <code>op&#95;DotAmpDot</code>. It is possible to call these static methods from C# (as a normal method call - not as an infix operator). However, the names are very odd and ReSharper thinks they are errors (even in ReSharper 9.0 Update 1 - see the screenshot below). For these reasons, FsCheckUtils
 provides wrappers around these operators.
+
+![ReSharper error](https://raw.githubusercontent.com/taylorjg/FsCheckUtils/master/Images/ReSharperError.png "ReSharper error")
 
 * PropExtensions.And (wraps .&.)
 * PropExtensions.AndAll (a convenience method that applies .&. to a params array of properties)
@@ -74,26 +76,23 @@ provides wrappers around these operators.
 
 ## Provides functionality that is in ScalaCheck but not in FsCheck
 
-* GenExtensions.pick
-* GenExtensions.someOf
+* GenExtensions.PickValues
+* GenExtensions.PickGenerators
+* GenExtensions.SomeOfValues
+* GenExtensions.SomeOfGenerators
+* GenExtensions.NumChar
+* GenExtensions.AlphaUpperChar
+* GenExtensions.AlphaLowerChar
+* GenExtensions.AlphaChar
+* GenExtensions.AlphaNumChar
+* GenExtensions.AlphaStr
+* GenExtensions.NumStr
+* GenExtensions.Guid
 
 ## TODO
 
-* NumChar
-* AlphaUpperChar
-* AlphaLowerChar
-* AlphaChar
-* AlphaNumChar
-
-* Identifier
-* AlphaStr
-* NumStr
-
-* Uuid
-   * See http://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_.28random.29
-
+* identifier
 * zip (arity 2 to 9)
     * Generates Tuple2 from g1/g2, Tuple3 from g1/g2/g3, etc
-
 * retryUntil
 * containerOf / Buildable
