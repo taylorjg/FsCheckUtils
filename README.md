@@ -94,8 +94,21 @@ provides wrappers around these operators.
 * GenExtensions.NumStr (Gen.numStr)
 * GenExtensions.Identifier (Gen.identifier)
 * GenExtensions.Guid (Gen.uuid)
+* GenExtensions.Zip (Gen.zip)
 
 ## TODO
 
-* Gen.zip (overloads with arity from 2 to 9) - generate Tuple2 from g1/g2, Tuple3 from g1/g2/g3, etc
+* Try to remove the dependency on the FSharp.Core NuGet package
+    * _it is only needed by folks using VS 2012 and they will probably have already added it_
 * Make FsCheckUtils available as a NuGet package
+* Generate MSDN-style documentation from the XML docs
+* Make the documentation available in a gh-pages branch of this repo
+* Ensure all public methods are covered by unit tests
+* Write some GitHub wiki articles about using FsCheck from C#
+
+## Using FsCheck from C#: some useful resources 
+
+* https://github.com/fsharp/FsCheck/blob/master/examples/FsCheck.CSharpExamples/Program.cs
+* http://fortysix-and-two.blogspot.co.uk/2009/05/announcing-fscheck-06-dot-is-new-pipe.html
+* http://bugsquash.blogspot.co.uk/2014/02/generating-immutable-instances-in-c.html
+* https://github.com/taylorjg/AnIntroductionToFsCheckTesting
