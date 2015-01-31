@@ -98,8 +98,6 @@ provides wrappers around these operators.
 
 ## TODO
 
-* Try to remove the dependency on the FSharp.Core NuGet package
-    * _it is only needed by folks using VS 2012 and they will probably have already added it_
 * Make FsCheckUtils available as a NuGet package
 * Generate MSDN-style documentation from the XML docs
 * Make the documentation available in a gh-pages branch of this repo
