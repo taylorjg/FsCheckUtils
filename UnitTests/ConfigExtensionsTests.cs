@@ -3,7 +3,6 @@ using FsCheckUtils;
 using Microsoft.FSharp.Collections;
 using Microsoft.FSharp.Core;
 using NUnit.Framework;
-using Random = FsCheck.Random;
 
 namespace UnitTests
 {
@@ -155,14 +154,21 @@ namespace UnitTests
         [Test]
         public void ToConfiguration()
         {
-            var configuration = Config.Default.ToConfiguration();
+            var config = Config.Default
+                .WithMaxTest(111)
+                .WithMaxFail(222)
+                .WithName("XXX")
+                .WithStartSize(333)
+                .WithEndSize(444)
+                .WithRunner(new MyRunner());
+            var configuration = config.ToConfiguration();
 
-            Assert.That(configuration.MaxNbOfTest, Is.EqualTo(Config.Default.MaxTest));
-            Assert.That(configuration.MaxNbOfFailedTests, Is.EqualTo(Config.Default.MaxFail));
-            Assert.That(configuration.Name, Is.EqualTo(Config.Default.Name));
-            Assert.That(configuration.StartSize, Is.EqualTo(Config.Default.StartSize));
-            Assert.That(configuration.EndSize, Is.EqualTo(Config.Default.EndSize));
-            Assert.That(configuration.Runner, Is.EqualTo(Config.Default.Runner));
+            Assert.That(configuration.MaxNbOfTest, Is.EqualTo(config.MaxTest));
+            Assert.That(configuration.MaxNbOfFailedTests, Is.EqualTo(config.MaxFail));
+            Assert.That(configuration.Name, Is.EqualTo(config.Name));
+            Assert.That(configuration.StartSize, Is.EqualTo(config.StartSize));
+            Assert.That(configuration.EndSize, Is.EqualTo(config.EndSize));
+            Assert.That(configuration.Runner, Is.EqualTo(config.Runner));
         }
     }
 }
