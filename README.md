@@ -3,6 +3,12 @@
 
 FsCheckUtils provides the facilities described in the following sections.
 
+## NuGet Package
+
+FsCheckUtils is available as a NuGet package:
+
+* https://www.nuget.org/packages/FsCheckUtils/
+
 ## Convenience extension methods
 
 ### Config
