@@ -12,7 +12,7 @@ namespace FsCheckUtils
     public static class ConfigExtensions
     {
         /// <summary>
-        /// Clone a <see cref="FsCheck.Config" /> object but override the <see cref="FsCheck.Config.MaxTest" /> property.
+        /// Clones a <see cref="FsCheck.Config" /> object but overrides the <see cref="FsCheck.Config.MaxTest" /> property.
         /// </summary>
         /// <param name="config">The <see cref="FsCheck.Config" /> object to clone.</param>
         /// <param name="maxTest">The value to user to override <see cref="FsCheck.Config.MaxTest" /></param>
@@ -33,7 +33,7 @@ namespace FsCheckUtils
         }
 
         /// <summary>
-        /// Clone a <see cref="FsCheck.Config" /> object but override the <see cref="FsCheck.Config.MaxFail" /> property.
+        /// Clones a <see cref="FsCheck.Config" /> object but overrides the <see cref="FsCheck.Config.MaxFail" /> property.
         /// </summary>
         /// <param name="config">The <see cref="FsCheck.Config" /> object to clone.</param>
         /// <param name="maxFail">The value to user to override <see cref="FsCheck.Config.MaxFail" /></param>
@@ -54,7 +54,7 @@ namespace FsCheckUtils
         }
 
         /// <summary>
-        /// Clone a <see cref="FsCheck.Config" /> object but override the <see cref="FsCheck.Config.Replay" /> property
+        /// Clones a <see cref="FsCheck.Config" /> object but overrides the <see cref="FsCheck.Config.Replay" /> property
         /// with a value of Some(<paramref name="replay"/>).
         /// </summary>
         /// <param name="config">The <see cref="FsCheck.Config" /> object to clone.</param>
@@ -76,7 +76,7 @@ namespace FsCheckUtils
         }
 
         /// <summary>
-        /// Clone a <see cref="FsCheck.Config" /> object but override the <see cref="FsCheck.Config.Replay" /> property
+        /// Clones a <see cref="FsCheck.Config" /> object but overrides the <see cref="FsCheck.Config.Replay" /> property
         /// with a value of None.
         /// </summary>
         /// <param name="config">The <see cref="FsCheck.Config" /> object to clone.</param>
@@ -97,7 +97,7 @@ namespace FsCheckUtils
         }
 
         /// <summary>
-        /// Clone a <see cref="FsCheck.Config" /> object but override the <see cref="FsCheck.Config.Name" /> property.
+        /// Clones a <see cref="FsCheck.Config" /> object but overrides the <see cref="FsCheck.Config.Name" /> property.
         /// </summary>
         /// <param name="config">The <see cref="FsCheck.Config" /> object to clone.</param>
         /// <param name="name">The value to user to override <see cref="FsCheck.Config.Name" /></param>
@@ -118,7 +118,7 @@ namespace FsCheckUtils
         }
 
         /// <summary>
-        /// Clone a <see cref="FsCheck.Config" /> object but override the <see cref="FsCheck.Config.StartSize" /> property.
+        /// Clones a <see cref="FsCheck.Config" /> object but overrides the <see cref="FsCheck.Config.StartSize" /> property.
         /// </summary>
         /// <param name="config">The <see cref="FsCheck.Config" /> object to clone.</param>
         /// <param name="startSize">The value to user to override <see cref="FsCheck.Config.StartSize" /></param>
@@ -139,7 +139,7 @@ namespace FsCheckUtils
         }
 
         /// <summary>
-        /// Clone a <see cref="FsCheck.Config" /> object but override the <see cref="FsCheck.Config.EndSize" /> property.
+        /// Clones a <see cref="FsCheck.Config" /> object but overrides the <see cref="FsCheck.Config.EndSize" /> property.
         /// </summary>
         /// <param name="config">The <see cref="FsCheck.Config" /> object to clone.</param>
         /// <param name="endSize">The value to user to override <see cref="FsCheck.Config.EndSize" /></param>
@@ -160,7 +160,7 @@ namespace FsCheckUtils
         }
 
         /// <summary>
-        /// Clone a <see cref="FsCheck.Config" /> object but override the <see cref="FsCheck.Config.Every" /> property.
+        /// Clones a <see cref="FsCheck.Config" /> object but overrides the <see cref="FsCheck.Config.Every" /> property.
         /// </summary>
         /// <param name="config">The <see cref="FsCheck.Config" /> object to clone.</param>
         /// <param name="every">The value to user to override <see cref="FsCheck.Config.Every" /></param>
@@ -181,7 +181,7 @@ namespace FsCheckUtils
         }
 
         /// <summary>
-        /// Clone a <see cref="FsCheck.Config" /> object but override the <see cref="FsCheck.Config.EveryShrink" /> property.
+        /// Clones a <see cref="FsCheck.Config" /> object but overrides the <see cref="FsCheck.Config.EveryShrink" /> property.
         /// </summary>
         /// <param name="config">The <see cref="FsCheck.Config" /> object to clone.</param>
         /// <param name="everyShrink">The value to user to override <see cref="FsCheck.Config.EveryShrink" /></param>
@@ -202,7 +202,7 @@ namespace FsCheckUtils
         }
 
         /// <summary>
-        /// Clone a <see cref="FsCheck.Config" /> object but override the <see cref="FsCheck.Config.Arbitrary" /> property.
+        /// Clones a <see cref="FsCheck.Config" /> object but overrides the <see cref="FsCheck.Config.Arbitrary" /> property.
         /// </summary>
         /// <param name="config">The <see cref="FsCheck.Config" /> object to clone.</param>
         /// <param name="arbitrary">The value to user to override <see cref="FsCheck.Config.Arbitrary" /></param>
@@ -223,7 +223,7 @@ namespace FsCheckUtils
         }
 
         /// <summary>
-        /// Clone a <see cref="FsCheck.Config" /> object but override the <see cref="FsCheck.Config.Runner" /> property.
+        /// Clones a <see cref="FsCheck.Config" /> object but overrides the <see cref="FsCheck.Config.Runner" /> property.
         /// </summary>
         /// <param name="config">The <see cref="FsCheck.Config" /> object to clone.</param>
         /// <param name="runner">The value to user to override <see cref="FsCheck.Config.Runner" /></param>
@@ -244,7 +244,7 @@ namespace FsCheckUtils
         }
 
         /// <summary>
-        /// Create a <see cref="FsCheck.Fluent.Configuration" /> object from a <see cref="FsCheck.Config" /> object.
+        /// Creates a <see cref="FsCheck.Fluent.Configuration" /> object from a <see cref="FsCheck.Config" /> object.
         /// </summary>
         /// <param name="config">The <see cref="FsCheck.Config" /> object to be used to populate the
         /// properties of the new <see cref="FsCheck.Fluent.Configuration" /> object.</param>
