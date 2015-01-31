@@ -1,4 +1,8 @@
 
+## Introduction
+
+FsCheckUtils provides the facilities described in the following sections.
+
 ## Convenience extension methods
 
 ### Config
@@ -80,6 +84,7 @@ provides wrappers around these operators.
 * GenExtensions.PickGenerators (Gen.pick)
 * GenExtensions.SomeOfValues (Gen.someOf)
 * GenExtensions.SomeOfGenerators (Gen.someOf)
+* GenExtensions.RetryUntil (Gen.retryUntil)
 * GenExtensions.NumChar (Gen.numChar)
 * GenExtensions.AlphaUpperChar (Gen.alphaUpperChar)
 * GenExtensions.AlphaLowerChar (Gen.alphaLowerChar)
@@ -87,12 +92,10 @@ provides wrappers around these operators.
 * GenExtensions.AlphaNumChar (Gen.alphaNumChar)
 * GenExtensions.AlphaStr (Gen.alphaStr)
 * GenExtensions.NumStr (Gen.numStr)
+* GenExtensions.Identifier (Gen.identifier)
 * GenExtensions.Guid (Gen.uuid)
 
 ## TODO
 
-* Gen.identifier
-* Gen.zip (arity 2 to 9)
-    * Generates Tuple2 from g1/g2, Tuple3 from g1/g2/g3, etc
-* Gen.retryUntil
-* Gen.containerOf / Buildable
+* Gen.zip (overloads arity 2 to 9) - generates Tuple2 from g1/g2, Tuple3 from g1/g2/g3, etc
+* Make FsCheckUtils available as a NuGet package
