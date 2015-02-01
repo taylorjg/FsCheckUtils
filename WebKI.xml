@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="AlphaChar property" Url="html/13478373-d024-0634-4f25-ab56e1c5dd69.htm" />
+  <HelpKINode Title="AlphaLowerChar property" Url="html/03ed1440-753b-e6e0-9674-939a632ebb8f.htm" />
+  <HelpKINode Title="AlphaNumChar property" Url="html/a416546d-5e14-e63b-df96-f2c0c58404b5.htm" />
+  <HelpKINode Title="AlphaStr property" Url="html/516731a9-8039-f9fb-dec3-f776dafe4898.htm" />
+  <HelpKINode Title="AlphaUpperChar property" Url="html/6e49b4dc-118a-395f-edce-2626c33d4624.htm" />
+  <HelpKINode Title="And(Of TLeftTestable, TRightTestable) method" Url="html/7bb05b46-14f1-b45d-a75e-1bbf94736c4c.htm" />
+  <HelpKINode Title="And&lt;TLeftTestable, TRightTestable&gt; method" Url="html/7bb05b46-14f1-b45d-a75e-1bbf94736c4c.htm" />
+  <HelpKINode Title="AndAll(Of TTestable) method" Url="html/1afc1bd2-7cee-2163-8b4a-2f30b8e8d894.htm" />
+  <HelpKINode Title="AndAll&lt;TTestable&gt; method" Url="html/1afc1bd2-7cee-2163-8b4a-2f30b8e8d894.htm" />
+  <HelpKINode Title="ConfigExtensions class">
+    <HelpKINode Title="ConfigExtensions Class" Url="html/4a399aa4-dc2b-eec8-e620-f8ea28f30587.htm" />
+    <HelpKINode Title="about ConfigExtensions class" Url="html/4a399aa4-dc2b-eec8-e620-f8ea28f30587.htm" />
+    <HelpKINode Title="methods" Url="html/0818a20f-d555-b7bb-d837-f0ce450a405b.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ConfigExtensions.ToConfiguration method" Url="html/336dab7a-55e9-a954-77d5-0fb3f6094625.htm" />
+  <HelpKINode Title="ConfigExtensions.WithArbitrary method" Url="html/3d803ad9-c5ee-ae87-2da1-1a4ae170a64d.htm" />
+  <HelpKINode Title="ConfigExtensions.WithEndSize method" Url="html/6446cb87-3d9d-762e-eac2-cb8be32ca65b.htm" />
+  <HelpKINode Title="ConfigExtensions.WithEvery method" Url="html/5887cff1-c0bb-4f8a-5af3-e085ba593b0b.htm" />
+  <HelpKINode Title="ConfigExtensions.WithEveryShrink method" Url="html/838a9acd-60c2-18bf-3793-78fcc4f305c6.htm" />
+  <HelpKINode Title="ConfigExtensions.WithMaxFail method" Url="html/4f39fba2-8c97-64ad-5749-1010bcab40bd.htm" />
+  <HelpKINode Title="ConfigExtensions.WithMaxTest method" Url="html/f5f5f4a9-8652-65c5-d845-5f7a3c64e34b.htm" />
+  <HelpKINode Title="ConfigExtensions.WithName method" Url="html/4a9bc9e5-3ddc-f49d-9b14-f3cd6927d0e7.htm" />
+  <HelpKINode Title="ConfigExtensions.WithNoReplay method" Url="html/9c6b270d-f5ca-8a27-ebfa-4bd42ada43a1.htm" />
+  <HelpKINode Title="ConfigExtensions.WithReplay method" Url="html/66a87701-d279-cfa0-94b3-1aee9571d818.htm" />
+  <HelpKINode Title="ConfigExtensions.WithRunner method" Url="html/7e623272-734f-47fb-785c-5418bb404dd5.htm" />
+  <HelpKINode Title="ConfigExtensions.WithStartSize method" Url="html/5bda3868-46dd-c173-2a8e-0b1a113b9d29.htm" />
+  <HelpKINode Title="ConfigurationExtensions class">
+    <HelpKINode Title="ConfigurationExtensions Class" Url="html/c8f559ad-73b2-4088-5a02-2d89cf6f0b60.htm" />
+    <HelpKINode Title="about ConfigurationExtensions class" Url="html/c8f559ad-73b2-4088-5a02-2d89cf6f0b60.htm" />
+    <HelpKINode Title="methods" Url="html/64f06c9e-5dec-43f0-78de-2949c12759cd.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ConfigurationExtensions.WithEndSize method" Url="html/68ed3c35-2f31-e5e9-bb7c-59976480fdfd.htm" />
+  <HelpKINode Title="ConfigurationExtensions.WithEvery method" Url="html/1c7abae2-a1d9-c6b4-32b2-2a97027e3806.htm" />
+  <HelpKINode Title="ConfigurationExtensions.WithEveryShrink method" Url="html/52663d61-05fa-6624-f001-bd502649b0de.htm" />
+  <HelpKINode Title="ConfigurationExtensions.WithMaxFail method" Url="html/bff66748-208c-79aa-8533-8a18fbc7c5ac.htm" />
+  <HelpKINode Title="ConfigurationExtensions.WithMaxTest method" Url="html/011d0a5e-5293-6af7-ccc9-6fb22e1daed2.htm" />
+  <HelpKINode Title="ConfigurationExtensions.WithName method" Url="html/d120501d-2659-88f8-06b0-c3be38fddb6e.htm" />
+  <HelpKINode Title="ConfigurationExtensions.WithRunner method" Url="html/c13d6df7-5bca-ad77-84f3-c754e5904765.htm" />
+  <HelpKINode Title="ConfigurationExtensions.WithStartSize method" Url="html/db13c777-0372-82da-d4b4-72b065db72f2.htm" />
+  <HelpKINode Title="FsCheckUtils namespace" Url="html/b8c05087-d908-65f9-1a62-07ca01d469c4.htm" />
+  <HelpKINode Title="FsCheckUtils.ConfigExtensions class" Url="html/4a399aa4-dc2b-eec8-e620-f8ea28f30587.htm" />
+  <HelpKINode Title="FsCheckUtils.ConfigurationExtensions class" Url="html/c8f559ad-73b2-4088-5a02-2d89cf6f0b60.htm" />
+  <HelpKINode Title="FsCheckUtils.GenExtensions class" Url="html/4d05b5c8-486d-edcd-ce8b-1f516325554f.htm" />
+  <HelpKINode Title="FsCheckUtils.PropExtensions class" Url="html/349ece78-e2c4-15f9-525f-0dca444dbf4c.htm" />
+  <HelpKINode Title="GenExtensions class">
+    <HelpKINode Title="GenExtensions Class" Url="html/4d05b5c8-486d-edcd-ce8b-1f516325554f.htm" />
+    <HelpKINode Title="about GenExtensions class" Url="html/4d05b5c8-486d-edcd-ce8b-1f516325554f.htm" />
+    <HelpKINode Title="methods" Url="html/1e58d02b-1c53-94bf-8f82-e55205ba7f17.htm" />
+    <HelpKINode Title="properties" Url="html/01ac12a8-99bd-2580-9d38-95964f30ada2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GenExtensions.AlphaChar property" Url="html/13478373-d024-0634-4f25-ab56e1c5dd69.htm" />
+  <HelpKINode Title="GenExtensions.AlphaLowerChar property" Url="html/03ed1440-753b-e6e0-9674-939a632ebb8f.htm" />
+  <HelpKINode Title="GenExtensions.AlphaNumChar property" Url="html/a416546d-5e14-e63b-df96-f2c0c58404b5.htm" />
+  <HelpKINode Title="GenExtensions.AlphaStr property" Url="html/516731a9-8039-f9fb-dec3-f776dafe4898.htm" />
+  <HelpKINode Title="GenExtensions.AlphaUpperChar property" Url="html/6e49b4dc-118a-395f-edce-2626c33d4624.htm" />
+  <HelpKINode Title="GenExtensions.Guid property" Url="html/0579be39-3719-3ea9-f64f-7a3b895c564e.htm" />
+  <HelpKINode Title="GenExtensions.Identifier property" Url="html/e92fb9c3-87cb-fd7e-7f1e-cfaa6ddeba7c.htm" />
+  <HelpKINode Title="GenExtensions.NumChar property" Url="html/d8a4a91f-0a17-29e3-02ad-b349d3bb2b47.htm" />
+  <HelpKINode Title="GenExtensions.NumStr property" Url="html/4b5af9aa-e72e-0a12-534e-10b931f36f13.htm" />
+  <HelpKINode Title="GenExtensions.PickGenerators method" Url="html/cb60a2ed-8927-bafe-8288-af918a5c6af9.htm" />
+  <HelpKINode Title="GenExtensions.PickValues method" Url="html/98730337-55f7-ed8a-ee23-0cc2965954c0.htm" />
+  <HelpKINode Title="GenExtensions.RetryUntil(Of T) method" Url="html/b90548e0-155a-3234-b463-c53d0a2d0698.htm" />
+  <HelpKINode Title="GenExtensions.RetryUntil&lt;T&gt; method" Url="html/b90548e0-155a-3234-b463-c53d0a2d0698.htm" />
+  <HelpKINode Title="GenExtensions.SomeOfGenerators method" Url="html/bc6b083a-e134-d4e6-d407-98cd1b3eea81.htm" />
+  <HelpKINode Title="GenExtensions.SomeOfValues method" Url="html/2c5292f8-e65f-2a3d-3538-1f0fc42e178f.htm" />
+  <HelpKINode Title="GenExtensions.Zip method" Url="html/385c2054-0494-db3a-c720-79e76346ec3d.htm" />
+  <HelpKINode Title="Guid property" Url="html/0579be39-3719-3ea9-f64f-7a3b895c564e.htm" />
+  <HelpKINode Title="Identifier property" Url="html/e92fb9c3-87cb-fd7e-7f1e-cfaa6ddeba7c.htm" />
+  <HelpKINode Title="Implies(Of TTestable) method" Url="html/9d3d120c-29bd-9a79-b159-d3d3fbfe868d.htm" />
+  <HelpKINode Title="Implies&lt;TTestable&gt; method" Url="html/9d3d120c-29bd-9a79-b159-d3d3fbfe868d.htm" />
+  <HelpKINode Title="Label(Of TTestable) method" Url="html/fdcfdd4d-8ce9-187e-3c7a-c09b0665d439.htm" />
+  <HelpKINode Title="Label&lt;TTestable&gt; method" Url="html/fdcfdd4d-8ce9-187e-3c7a-c09b0665d439.htm" />
+  <HelpKINode Title="NumChar property" Url="html/d8a4a91f-0a17-29e3-02ad-b349d3bb2b47.htm" />
+  <HelpKINode Title="NumStr property" Url="html/4b5af9aa-e72e-0a12-534e-10b931f36f13.htm" />
+  <HelpKINode Title="Or(Of TLeftTestable, TRightTestable) method" Url="html/d111e848-1120-3aaf-18fe-3b3f8793124d.htm" />
+  <HelpKINode Title="Or&lt;TLeftTestable, TRightTestable&gt; method" Url="html/d111e848-1120-3aaf-18fe-3b3f8793124d.htm" />
+  <HelpKINode Title="OrAll(Of TTestable) method" Url="html/6926031c-791d-290f-11e0-83fecb0b43a0.htm" />
+  <HelpKINode Title="OrAll&lt;TTestable&gt; method" Url="html/6926031c-791d-290f-11e0-83fecb0b43a0.htm" />
+  <HelpKINode Title="PickGenerators method" Url="html/cb60a2ed-8927-bafe-8288-af918a5c6af9.htm" />
+  <HelpKINode Title="PickValues method" Url="html/98730337-55f7-ed8a-ee23-0cc2965954c0.htm" />
+  <HelpKINode Title="PropExtensions class">
+    <HelpKINode Title="PropExtensions Class" Url="html/349ece78-e2c4-15f9-525f-0dca444dbf4c.htm" />
+    <HelpKINode Title="about PropExtensions class" Url="html/349ece78-e2c4-15f9-525f-0dca444dbf4c.htm" />
+    <HelpKINode Title="methods" Url="html/49dc2b63-f58e-9f48-3238-2db7a47a3453.htm" />
+  </HelpKINode>
+  <HelpKINode Title="PropExtensions.And(Of TLeftTestable, TRightTestable) method" Url="html/7bb05b46-14f1-b45d-a75e-1bbf94736c4c.htm" />
+  <HelpKINode Title="PropExtensions.And&lt;TLeftTestable, TRightTestable&gt; method" Url="html/7bb05b46-14f1-b45d-a75e-1bbf94736c4c.htm" />
+  <HelpKINode Title="PropExtensions.AndAll(Of TTestable) method" Url="html/1afc1bd2-7cee-2163-8b4a-2f30b8e8d894.htm" />
+  <HelpKINode Title="PropExtensions.AndAll&lt;TTestable&gt; method" Url="html/1afc1bd2-7cee-2163-8b4a-2f30b8e8d894.htm" />
+  <HelpKINode Title="PropExtensions.Implies(Of TTestable) method" Url="html/9d3d120c-29bd-9a79-b159-d3d3fbfe868d.htm" />
+  <HelpKINode Title="PropExtensions.Implies&lt;TTestable&gt; method" Url="html/9d3d120c-29bd-9a79-b159-d3d3fbfe868d.htm" />
+  <HelpKINode Title="PropExtensions.Label(Of TTestable) method" Url="html/fdcfdd4d-8ce9-187e-3c7a-c09b0665d439.htm" />
+  <HelpKINode Title="PropExtensions.Label&lt;TTestable&gt; method" Url="html/fdcfdd4d-8ce9-187e-3c7a-c09b0665d439.htm" />
+  <HelpKINode Title="PropExtensions.Or(Of TLeftTestable, TRightTestable) method" Url="html/d111e848-1120-3aaf-18fe-3b3f8793124d.htm" />
+  <HelpKINode Title="PropExtensions.Or&lt;TLeftTestable, TRightTestable&gt; method" Url="html/d111e848-1120-3aaf-18fe-3b3f8793124d.htm" />
+  <HelpKINode Title="PropExtensions.OrAll(Of TTestable) method" Url="html/6926031c-791d-290f-11e0-83fecb0b43a0.htm" />
+  <HelpKINode Title="PropExtensions.OrAll&lt;TTestable&gt; method" Url="html/6926031c-791d-290f-11e0-83fecb0b43a0.htm" />
+  <HelpKINode Title="RetryUntil(Of T) method" Url="html/b90548e0-155a-3234-b463-c53d0a2d0698.htm" />
+  <HelpKINode Title="RetryUntil&lt;T&gt; method" Url="html/b90548e0-155a-3234-b463-c53d0a2d0698.htm" />
+  <HelpKINode Title="SomeOfGenerators method" Url="html/bc6b083a-e134-d4e6-d407-98cd1b3eea81.htm" />
+  <HelpKINode Title="SomeOfValues method" Url="html/2c5292f8-e65f-2a3d-3538-1f0fc42e178f.htm" />
+  <HelpKINode Title="ToConfiguration method" Url="html/336dab7a-55e9-a954-77d5-0fb3f6094625.htm" />
+  <HelpKINode Title="WithArbitrary method" Url="html/3d803ad9-c5ee-ae87-2da1-1a4ae170a64d.htm" />
+  <HelpKINode Title="WithEndSize method">
+    <HelpKINode Title="ConfigExtensions.WithEndSize Method " Url="html/6446cb87-3d9d-762e-eac2-cb8be32ca65b.htm" />
+    <HelpKINode Title="ConfigurationExtensions.WithEndSize Method " Url="html/68ed3c35-2f31-e5e9-bb7c-59976480fdfd.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WithEvery method">
+    <HelpKINode Title="ConfigExtensions.WithEvery Method " Url="html/5887cff1-c0bb-4f8a-5af3-e085ba593b0b.htm" />
+    <HelpKINode Title="ConfigurationExtensions.WithEvery Method " Url="html/1c7abae2-a1d9-c6b4-32b2-2a97027e3806.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WithEveryShrink method">
+    <HelpKINode Title="ConfigExtensions.WithEveryShrink Method " Url="html/838a9acd-60c2-18bf-3793-78fcc4f305c6.htm" />
+    <HelpKINode Title="ConfigurationExtensions.WithEveryShrink Method " Url="html/52663d61-05fa-6624-f001-bd502649b0de.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WithMaxFail method">
+    <HelpKINode Title="ConfigExtensions.WithMaxFail Method " Url="html/4f39fba2-8c97-64ad-5749-1010bcab40bd.htm" />
+    <HelpKINode Title="ConfigurationExtensions.WithMaxFail Method " Url="html/bff66748-208c-79aa-8533-8a18fbc7c5ac.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WithMaxTest method">
+    <HelpKINode Title="ConfigExtensions.WithMaxTest Method " Url="html/f5f5f4a9-8652-65c5-d845-5f7a3c64e34b.htm" />
+    <HelpKINode Title="ConfigurationExtensions.WithMaxTest Method " Url="html/011d0a5e-5293-6af7-ccc9-6fb22e1daed2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WithName method">
+    <HelpKINode Title="ConfigExtensions.WithName Method " Url="html/4a9bc9e5-3ddc-f49d-9b14-f3cd6927d0e7.htm" />
+    <HelpKINode Title="ConfigurationExtensions.WithName Method " Url="html/d120501d-2659-88f8-06b0-c3be38fddb6e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WithNoReplay method" Url="html/9c6b270d-f5ca-8a27-ebfa-4bd42ada43a1.htm" />
+  <HelpKINode Title="WithReplay method" Url="html/66a87701-d279-cfa0-94b3-1aee9571d818.htm" />
+  <HelpKINode Title="WithRunner method">
+    <HelpKINode Title="ConfigExtensions.WithRunner Method " Url="html/7e623272-734f-47fb-785c-5418bb404dd5.htm" />
+    <HelpKINode Title="ConfigurationExtensions.WithRunner Method " Url="html/c13d6df7-5bca-ad77-84f3-c754e5904765.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WithStartSize method">
+    <HelpKINode Title="ConfigExtensions.WithStartSize Method " Url="html/5bda3868-46dd-c173-2a8e-0b1a113b9d29.htm" />
+    <HelpKINode Title="ConfigurationExtensions.WithStartSize Method " Url="html/db13c777-0372-82da-d4b4-72b065db72f2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Zip method" Url="html/385c2054-0494-db3a-c720-79e76346ec3d.htm" />
+</HelpKI>

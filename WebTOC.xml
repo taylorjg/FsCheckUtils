@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="344304df-89af-4e40-8d6c-ac1f1416a5c9" Title="FsCheckUtils" Url="html/b8c05087-d908-65f9-1a62-07ca01d469c4.htm">
+    <HelpTOCNode Id="a5e9e190-ce8c-43f0-881b-acab20b58d5e" Title="ConfigExtensions Class" Url="html/4a399aa4-dc2b-eec8-e620-f8ea28f30587.htm">
+      <HelpTOCNode Id="4a2df296-3419-4574-977f-e4f1fd6e2595" Title="ConfigExtensions Methods" Url="html/0818a20f-d555-b7bb-d837-f0ce450a405b.htm">
+        <HelpTOCNode Title="ToConfiguration Method " Url="html/336dab7a-55e9-a954-77d5-0fb3f6094625.htm" />
+        <HelpTOCNode Title="WithArbitrary Method " Url="html/3d803ad9-c5ee-ae87-2da1-1a4ae170a64d.htm" />
+        <HelpTOCNode Title="WithEndSize Method " Url="html/6446cb87-3d9d-762e-eac2-cb8be32ca65b.htm" />
+        <HelpTOCNode Title="WithEvery Method " Url="html/5887cff1-c0bb-4f8a-5af3-e085ba593b0b.htm" />
+        <HelpTOCNode Title="WithEveryShrink Method " Url="html/838a9acd-60c2-18bf-3793-78fcc4f305c6.htm" />
+        <HelpTOCNode Title="WithMaxFail Method " Url="html/4f39fba2-8c97-64ad-5749-1010bcab40bd.htm" />
+        <HelpTOCNode Title="WithMaxTest Method " Url="html/f5f5f4a9-8652-65c5-d845-5f7a3c64e34b.htm" />
+        <HelpTOCNode Title="WithName Method " Url="html/4a9bc9e5-3ddc-f49d-9b14-f3cd6927d0e7.htm" />
+        <HelpTOCNode Title="WithNoReplay Method " Url="html/9c6b270d-f5ca-8a27-ebfa-4bd42ada43a1.htm" />
+        <HelpTOCNode Title="WithReplay Method " Url="html/66a87701-d279-cfa0-94b3-1aee9571d818.htm" />
+        <HelpTOCNode Title="WithRunner Method " Url="html/7e623272-734f-47fb-785c-5418bb404dd5.htm" />
+        <HelpTOCNode Title="WithStartSize Method " Url="html/5bda3868-46dd-c173-2a8e-0b1a113b9d29.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="e75ae5a0-0908-44a9-81c9-0e15c8200eaf" Title="ConfigurationExtensions Class" Url="html/c8f559ad-73b2-4088-5a02-2d89cf6f0b60.htm">
+      <HelpTOCNode Id="88690937-6a33-446a-b5ba-539ca39fefde" Title="ConfigurationExtensions Methods" Url="html/64f06c9e-5dec-43f0-78de-2949c12759cd.htm">
+        <HelpTOCNode Title="WithEndSize Method " Url="html/68ed3c35-2f31-e5e9-bb7c-59976480fdfd.htm" />
+        <HelpTOCNode Title="WithEvery Method " Url="html/1c7abae2-a1d9-c6b4-32b2-2a97027e3806.htm" />
+        <HelpTOCNode Title="WithEveryShrink Method " Url="html/52663d61-05fa-6624-f001-bd502649b0de.htm" />
+        <HelpTOCNode Title="WithMaxFail Method " Url="html/bff66748-208c-79aa-8533-8a18fbc7c5ac.htm" />
+        <HelpTOCNode Title="WithMaxTest Method " Url="html/011d0a5e-5293-6af7-ccc9-6fb22e1daed2.htm" />
+        <HelpTOCNode Title="WithName Method " Url="html/d120501d-2659-88f8-06b0-c3be38fddb6e.htm" />
+        <HelpTOCNode Title="WithRunner Method " Url="html/c13d6df7-5bca-ad77-84f3-c754e5904765.htm" />
+        <HelpTOCNode Title="WithStartSize Method " Url="html/db13c777-0372-82da-d4b4-72b065db72f2.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5da20992-7b3d-4431-aff0-8838a0220ad3" Title="GenExtensions Class" Url="html/4d05b5c8-486d-edcd-ce8b-1f516325554f.htm">
+      <HelpTOCNode Id="b7cdd169-d3e8-43a2-b2fc-5b7d540c2782" Title="GenExtensions Methods" Url="html/1e58d02b-1c53-94bf-8f82-e55205ba7f17.htm">
+        <HelpTOCNode Id="a934b6b9-8a7e-4196-85be-f3e77e437575" Title="PickGenerators Method " Url="html/cb60a2ed-8927-bafe-8288-af918a5c6af9.htm">
+          <HelpTOCNode Title="PickGenerators(T) Method (Int32, Gen`1(T)[])" Url="html/aa6f5cb9-0e5d-4de1-bfae-a14159a78e96.htm" />
+          <HelpTOCNode Title="PickGenerators(T) Method (Int32, IEnumerable(Gen`1(T)))" Url="html/72ee571d-e65b-8227-f2db-dd0f4189aafa.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="58440721-fbb6-4bde-9fcd-1dca1f9fcf5a" Title="PickValues Method " Url="html/98730337-55f7-ed8a-ee23-0cc2965954c0.htm">
+          <HelpTOCNode Title="PickValues(T) Method (Int32, IEnumerable(T))" Url="html/b65abcc6-2744-5079-783a-c8c86dfdf091.htm" />
+          <HelpTOCNode Title="PickValues(T) Method (Int32, T[])" Url="html/2aed748f-143c-99be-48a5-2c4abd690f75.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="RetryUntil(T) Method " Url="html/b90548e0-155a-3234-b463-c53d0a2d0698.htm" />
+        <HelpTOCNode Id="178d3b63-8b9a-4701-8547-6ae9789c12ae" Title="SomeOfGenerators Method " Url="html/bc6b083a-e134-d4e6-d407-98cd1b3eea81.htm">
+          <HelpTOCNode Title="SomeOfGenerators(T) Method (Gen`1(T)[])" Url="html/5bf39f33-b931-cee6-8f98-a494eaa3ada4.htm" />
+          <HelpTOCNode Title="SomeOfGenerators(T) Method (IEnumerable(Gen`1(T)))" Url="html/757895c2-951e-b127-e114-daf71d34d034.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="ddac9197-5d3d-4ea4-84fb-2f09e71cab36" Title="SomeOfValues Method " Url="html/2c5292f8-e65f-2a3d-3538-1f0fc42e178f.htm">
+          <HelpTOCNode Title="SomeOfValues(T) Method (IEnumerable(T))" Url="html/33091000-d849-20f7-7548-572caafb0d69.htm" />
+          <HelpTOCNode Title="SomeOfValues(T) Method (T[])" Url="html/e0c4702f-fc25-cd7d-de29-5eafa6c85435.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="e96b3104-593a-4152-a6fb-282d9988218c" Title="Zip Method " Url="html/385c2054-0494-db3a-c720-79e76346ec3d.htm">
+          <HelpTOCNode Title="Zip(T1, T2) Method (Gen`1(T1), Gen`1(T2))" Url="html/883404a7-0025-a8ec-bab0-112cb278548c.htm" />
+          <HelpTOCNode Title="Zip(T1, T2, T3) Method (Gen`1(T1), Gen`1(T2), Gen`1(T3))" Url="html/c416a3ce-6be5-2a79-4fad-3041b908bf33.htm" />
+          <HelpTOCNode Title="Zip(T1, T2, T3, T4) Method (Gen`1(T1), Gen`1(T2), Gen`1(T3), Gen`1(T4))" Url="html/20f6f6c2-32b8-2cd2-c8cb-4a076bdaa5cc.htm" />
+          <HelpTOCNode Title="Zip(T1, T2, T3, T4, T5) Method (Gen`1(T1), Gen`1(T2), Gen`1(T3), Gen`1(T4), Gen`1(T5))" Url="html/950b240e-ec93-1068-a7d9-fd79354cdf6a.htm" />
+          <HelpTOCNode Title="Zip(T1, T2, T3, T4, T5, T6) Method (Gen`1(T1), Gen`1(T2), Gen`1(T3), Gen`1(T4), Gen`1(T5), Gen`1(T6))" Url="html/a7b73876-73b8-78d2-92fb-b4713f1fe26e.htm" />
+          <HelpTOCNode Title="Zip(T1, T2, T3, T4, T5, T6, T7) Method (Gen`1(T1), Gen`1(T2), Gen`1(T3), Gen`1(T4), Gen`1(T5), Gen`1(T6), Gen`1(T7))" Url="html/c65c0c2f-8f60-217b-4179-7fb4a011614e.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="05a9e579-54ef-49b8-a501-172231af7c1a" Title="GenExtensions Properties" Url="html/01ac12a8-99bd-2580-9d38-95964f30ada2.htm">
+        <HelpTOCNode Title="AlphaChar Property " Url="html/13478373-d024-0634-4f25-ab56e1c5dd69.htm" />
+        <HelpTOCNode Title="AlphaLowerChar Property " Url="html/03ed1440-753b-e6e0-9674-939a632ebb8f.htm" />
+        <HelpTOCNode Title="AlphaNumChar Property " Url="html/a416546d-5e14-e63b-df96-f2c0c58404b5.htm" />
+        <HelpTOCNode Title="AlphaStr Property " Url="html/516731a9-8039-f9fb-dec3-f776dafe4898.htm" />
+        <HelpTOCNode Title="AlphaUpperChar Property " Url="html/6e49b4dc-118a-395f-edce-2626c33d4624.htm" />
+        <HelpTOCNode Title="Guid Property " Url="html/0579be39-3719-3ea9-f64f-7a3b895c564e.htm" />
+        <HelpTOCNode Title="Identifier Property " Url="html/e92fb9c3-87cb-fd7e-7f1e-cfaa6ddeba7c.htm" />
+        <HelpTOCNode Title="NumChar Property " Url="html/d8a4a91f-0a17-29e3-02ad-b349d3bb2b47.htm" />
+        <HelpTOCNode Title="NumStr Property " Url="html/4b5af9aa-e72e-0a12-534e-10b931f36f13.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="7a66ea5e-2f03-4b93-8d13-58bdc5a73311" Title="PropExtensions Class" Url="html/349ece78-e2c4-15f9-525f-0dca444dbf4c.htm">
+      <HelpTOCNode Id="f62417c3-a9fa-417a-bb8e-841075e2d289" Title="PropExtensions Methods" Url="html/49dc2b63-f58e-9f48-3238-2db7a47a3453.htm">
+        <HelpTOCNode Title="And(TLeftTestable, TRightTestable) Method " Url="html/7bb05b46-14f1-b45d-a75e-1bbf94736c4c.htm" />
+        <HelpTOCNode Title="AndAll(TTestable) Method " Url="html/1afc1bd2-7cee-2163-8b4a-2f30b8e8d894.htm" />
+        <HelpTOCNode Title="Implies(TTestable) Method " Url="html/9d3d120c-29bd-9a79-b159-d3d3fbfe868d.htm" />
+        <HelpTOCNode Title="Label(TTestable) Method " Url="html/fdcfdd4d-8ce9-187e-3c7a-c09b0665d439.htm" />
+        <HelpTOCNode Title="Or(TLeftTestable, TRightTestable) Method " Url="html/d111e848-1120-3aaf-18fe-3b3f8793124d.htm" />
+        <HelpTOCNode Title="OrAll(TTestable) Method " Url="html/6926031c-791d-290f-11e0-83fecb0b43a0.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>
