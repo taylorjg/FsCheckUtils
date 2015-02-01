@@ -395,14 +395,13 @@ namespace FsCheckUtils
 
         /// <summary>
         /// Generates a version 4 (random) UUID.
+        /// See <a href="http://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_.28random.29">this link</a> for more information.
         /// </summary>
         /// <returns>A generator that generates a version 4 (random) UUID.</returns>
         public static Gen<Guid> Guid
         {
             get
             {
-            // http://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_.28random.29
-
             return from l1Upper in Gen.choose(0, int.MaxValue)
                    from l1Lower in Gen.choose(0, int.MaxValue)
                    from l2Upper in Gen.choose(0, int.MaxValue)

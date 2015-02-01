@@ -84,7 +84,7 @@ provides wrappers around these operators.
 * PropExtensions.Label (wraps |@)
 * PropExtensions.Implies (wraps ==>)
 
-## Generators that are in ScalaCheck but not in FsCheck
+## Generators and combinators that are in ScalaCheck but not in FsCheck
 
 * GenExtensions.PickValues (Gen.pick)
 * GenExtensions.PickGenerators (Gen.pick)
@@ -102,11 +102,16 @@ provides wrappers around these operators.
 * GenExtensions.Guid (Gen.uuid)
 * GenExtensions.Zip (Gen.zip)
 
+## Documentation
+
+Documentation, built from XML documentation comments using
+[Sandcastle Help File Builder](https://github.com/EWSoftware/SHFB), can be found here:
+
+* http://taylorjg.github.io/FsCheckUtils/index.html
+
 ## TODO
 
-* Generate MSDN-style documentation from the XML docs
-* Make the documentation available in a gh-pages branch of this repo
-* Ensure all public methods are covered by unit tests
+* Ensure all public methods are covered by unit tests (only a couple aren't)
 * Write some GitHub wiki articles about using FsCheck from C#
 
 ## Using FsCheck from C#: some useful resources 

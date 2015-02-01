@@ -9,7 +9,7 @@ namespace FsCheckUtils
     public static class PropExtensions
     {
         /// <summary>
-        /// Wrapper method around FsCheck's .&. operator that succeeds if both properties succeed.
+        /// Wrapper method around FsCheck's .&amp;. operator that succeeds if both properties succeed.
         /// </summary>
         /// <typeparam name="TLeftTestable">Type of the left property.</typeparam>
         /// <typeparam name="TRightTestable">Type of the right property.</typeparam>
@@ -22,7 +22,7 @@ namespace FsCheckUtils
         }
 
         /// <summary>
-        /// Convenience method that applies FsCheck's .&. operator to a collection of properties and succeeds if all properties succeed.
+        /// Convenience method that applies FsCheck's .&amp;. operator to a collection of properties and succeeds if all properties succeed.
         /// </summary>
         /// <typeparam name="TTestable">Type of the properties in the collection. They must all be of the same type.</typeparam>
         /// <param name="assertions">The collection of properties.</param>
