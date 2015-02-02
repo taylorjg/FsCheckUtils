@@ -120,3 +120,4 @@ Documentation, built from XML documentation comments using
 * http://fortysix-and-two.blogspot.co.uk/2009/05/announcing-fscheck-06-dot-is-new-pipe.html
 * http://bugsquash.blogspot.co.uk/2014/02/generating-immutable-instances-in-c.html
 * https://github.com/taylorjg/AnIntroductionToFsCheckTesting
+* https://github.com/taylorjg/ScalaCheckBookExamplesInFsCheck
