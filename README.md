@@ -121,3 +121,5 @@ Documentation, built from XML documentation comments using
 * http://bugsquash.blogspot.co.uk/2014/02/generating-immutable-instances-in-c.html
 * https://github.com/taylorjg/AnIntroductionToFsCheckTesting
 * https://github.com/taylorjg/ScalaCheckBookExamplesInFsCheck
+* https://github.com/taylorjg/DontShrinkTests
+* https://github.com/taylorjg/CustomShrinkerTests
