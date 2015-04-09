@@ -1,3 +1,4 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/2qb0m0g484qdqaae/branch/master?svg=true)](https://ci.appveyor.com/project/taylorjg/fscheckutils/branch/master)
 
 ## Introduction
 
