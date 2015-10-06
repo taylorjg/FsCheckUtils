@@ -12,6 +12,74 @@ namespace FsCheckUtils
     public static class GenExtensions
     {
         /// <summary>
+        /// TODO
+        /// </summary>
+        /// <typeparam name="T">TODO</typeparam>
+        /// <param name="source">TODO</param>
+        /// <returns>TODO</returns>
+        public static Gen<List<T>> Shuffle<T>(params T[] source)
+        {
+            var n = source.Length;
+
+            if (n < 2) return Gen.constant(source.ToList());
+
+            Action<List<T>, Tuple<int, int>> doExchange = (list, epr) =>
+            {
+                var tmp = list[epr.Item2];
+                list[epr.Item2] = list[epr.Item1];
+                list[epr.Item1] = tmp;
+            };
+
+            Func<IEnumerable<Tuple<int, int>>, List<T>> doExchanges = eprs =>
+            {
+                var copyOfOriginalList = new List<T>(source);
+                foreach (var epr in eprs) doExchange(copyOfOriginalList, epr);
+                return copyOfOriginalList;
+            };
+
+            // Fischer-Yates/Knuth shuffle
+            // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+
+            var indices = Enumerable.Range(1, n - 1).Reverse();
+            var exchangePairGens = indices.Select(i => (Any.IntBetween(0, i).Select(j => Tuple.Create(i, j))));
+            var genExchangePairs = Any.SequenceOf(exchangePairGens);
+            return genExchangePairs.Select(doExchanges);
+        }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <typeparam name="T">TODO</typeparam>
+        /// <param name="source">TODO</param>
+        /// <returns>TODO</returns>
+        public static Gen<List<T>> Shuffle<T>(IEnumerable<T> source)
+        {
+            return Shuffle(source.ToArray());
+        }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <typeparam name="T">TODO</typeparam>
+        /// <param name="gs">TODO</param>
+        /// <returns>TODO</returns>
+        public static Gen<List<T>> ShuffleGenerators<T>(params Gen<T>[] gs)
+        {
+            return Shuffle(gs).SelectMany(Any.SequenceOf);
+        }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <typeparam name="T">TODO</typeparam>
+        /// <param name="gs">TODO</param>
+        /// <returns>TODO</returns>
+        public static Gen<List<T>> ShuffleGenerators<T>(IEnumerable<Gen<T>> gs)
+        {
+            return ShuffleGenerators(gs.ToArray());
+        }
+
+        /// <summary>
         /// A generator that picks a given number of elements from a list, randomly.
         /// </summary>
         /// <typeparam name="T">The type of the elements in the list.</typeparam>

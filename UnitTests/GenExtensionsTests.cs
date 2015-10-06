@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using FsCheck;
@@ -67,6 +68,29 @@ namespace UnitTests
                 .When(Uncurry(condition))
                 .Shrink(Uncurry(shrinker))
                 .Check(Configuration);
+        }
+
+        [Test]
+        public void Shuffle()
+        {
+            var numbers = Enumerable.Range(1, 10).ToList();
+            var genShuffledNumbers = GenExtensions.Shuffle(numbers.AsEnumerable());
+            var shuffledNumberSamples = Gen.sample(1, 100, genShuffledNumbers).ToList();
+            var comparer = new ShuffledNumbersSampleComparer();
+            Assert.That(shuffledNumberSamples.Distinct(comparer).Count(), Is.EqualTo(shuffledNumberSamples.Count));
+        }
+
+        private class ShuffledNumbersSampleComparer : IEqualityComparer<IEnumerable<int>>
+        {
+            public bool Equals(IEnumerable<int> sample1, IEnumerable<int> sample2)
+            {
+                return sample1.SequenceEqual(sample2);
+            }
+
+            public int GetHashCode(IEnumerable<int> sample)
+            {
+                return 0;
+            }
         }
 
         // Add more tests re:
