@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using FsCheck;
@@ -79,6 +78,10 @@ namespace UnitTests
             var comparer = new ShuffledNumbersSampleComparer();
             Assert.That(shuffledNumberSamples.Distinct(comparer).Count(), Is.EqualTo(shuffledNumberSamples.Count));
         }
+
+        // TODO: add test re Shuffle with params array of T
+        // TODO: add test re ShuffleGenerators with enumerable of T
+        // TODO: add test re ShuffleGenerators with params array of T
 
         private class ShuffledNumbersSampleComparer : IEqualityComparer<IEnumerable<int>>
         {

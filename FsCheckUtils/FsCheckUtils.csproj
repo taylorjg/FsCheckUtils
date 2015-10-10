@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArbitraryExtensions.cs" />
+    <Compile Include="RegisterExtensions.cs" />
     <Compile Include="ConfigExtensions.cs" />
     <Compile Include="ConfigurationExtensions.cs" />
     <Compile Include="GenExtensions.cs" />

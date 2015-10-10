@@ -111,6 +111,9 @@ namespace UnitTests
             Assert.That(ex.Message, Is.StringStarting("Falsifiable"));
         }
 
+        // TODO: add test(s) re Label
+        // TODO: add test(s) re Implies
+
         private static Property AndProperties(int n, Func<int, bool> leftPropertyFunc, Func<int, bool> rightPropertyFunc)
         {
             var p1 = PropExtensions.Label(leftPropertyFunc(n), "Left property");
