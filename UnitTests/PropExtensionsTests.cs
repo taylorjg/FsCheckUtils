@@ -114,37 +114,88 @@ namespace UnitTests
 
         // TODO: add test(s) re Label
         // TODO: add test(s) re Implies
-        // TODO: add test(s) re Classify (non-fluent)
-        // TODO: add test re Classify (fluent 2 type paramerters)
-        // TODO: add test re Classify (fluent 3 type paramerters)
 
         [Test]
         public void ClassifyNonFluent()
         {
-        }
-
-        [Test]
-        public void ClassifyFluentWithOneTypeParameter()
-        {
             var spyingRunner = new SpyingRunner(Config.Default.Runner);
-            var configuration = Config.Default.WithRunner(spyingRunner).ToConfiguration();
+            var config = Config.Default.WithRunner(spyingRunner);
 
-            Func<int, bool> assertion = n => true;
-            Func<int, bool> isEven = n => n%2 == 0;
-
-            Spec
-                .ForAny(assertion)
-                .Classify(isEven, "Even", "Odd")
-                .Check(configuration);
+            Converter<int, Property> body = n =>
+                PropExtensions.Classify<Property>(IsEven(n), "Even", "Odd")
+                    .Invoke(Prop.ofTestable(true));
+            var bodyFSharpFunc = FSharpFunc<int, Property>.FromConverter(body);
+            var property = Prop.forAll(Arb.from<int>(), bodyFSharpFunc);
+            Check.One(config, property);
 
             Assert.That(spyingRunner.TestResult.IsTrue, Is.True);
             var testResultTrue = (TestResult.True) spyingRunner.TestResult;
             var stamps = testResultTrue.Item.Stamps.ToList();
             Assert.That(stamps.Count, Is.EqualTo(2));
-            Assert.That(stamps[0].Item1, Is.InRange(35, 65));
-            Assert.That(stamps[1].Item1, Is.InRange(35, 65));
             var stampStrings = stamps.Select(s => s.Item2[0]).ToList();
             var expectedStampStrings = new[] {"Even", "Odd"};
+            Assert.That(stampStrings, Is.EqualTo(expectedStampStrings).Or.EqualTo(expectedStampStrings.Reverse()));
+        }
+
+        [Test]
+        public void ClassifyFluentWithOneTypeParameter()
+        {
+            ClassifyFluentCommon(configuration =>
+            {
+                Func<int, bool> assertion = n => true;
+                Spec
+                    .ForAny(assertion)
+                    .Classify(IsEven, "Even", "Odd")
+                    .Check(configuration);
+            });
+        }
+
+        [Test]
+        public void ClassifyFluentWithTwoTypeParameters()
+        {
+            ClassifyFluentCommon(configuration =>
+            {
+                Func<int, int, bool> assertion = (n1, n2) => true;
+                Func<int, int, bool> areEven = (n1, n2) => IsEven(n1) && IsEven(n2);
+                Spec
+                    .ForAny(assertion)
+                    .Classify(areEven, "Even", "Odd")
+                    .Check(configuration);
+            });
+        }
+
+        [Test]
+        public void ClassifyFluentWithThreeTypeParameters()
+        {
+            ClassifyFluentCommon(configuration =>
+            {
+                Func<int, int, int, bool> assertion = (n1, n2, n3) => true;
+                Func<int, int, int, bool> areEven = (n1, n2, n3) => IsEven(n1) && IsEven(n2) && IsEven(n3);
+                Spec
+                    .ForAny(assertion)
+                    .Classify(areEven, "Even", "Odd")
+                    .Check(configuration);
+            });
+        }
+
+        private static bool IsEven(int n)
+        {
+            return n % 2 == 0;
+        }
+
+        private static void ClassifyFluentCommon(Action<Configuration> action)
+        {
+            var spyingRunner = new SpyingRunner(Config.Default.Runner);
+            var configuration = Config.Default.WithRunner(spyingRunner).ToConfiguration();
+
+            action(configuration);
+
+            Assert.That(spyingRunner.TestResult.IsTrue, Is.True);
+            var testResultTrue = (TestResult.True)spyingRunner.TestResult;
+            var stamps = testResultTrue.Item.Stamps.ToList();
+            Assert.That(stamps.Count, Is.EqualTo(2));
+            var stampStrings = stamps.Select(s => s.Item2[0]).ToList();
+            var expectedStampStrings = new[] { "Even", "Odd" };
             Assert.That(stampStrings, Is.EqualTo(expectedStampStrings).Or.EqualTo(expectedStampStrings.Reverse()));
         }
 

@@ -98,17 +98,6 @@ namespace FsCheckUtils
             return Prop.classify<TTestable>(true, condition ? ifTrue : ifFalse);
         }
 
-        // TODO: add the Fluent equivalents of the above too.
-
-        // public FsCheck.Fluent.SpecBuilder<a> Classify(System.Func<a, bool> filter, string name)
-        // Member of FsCheck.Fluent.SpecBuilder<a>
-
-        // public FsCheck.Fluent.SpecBuilder<a, b> Classify(System.Func<a, b, bool> filter, string name)
-        // Member of FsCheck.Fluent.SpecBuilder<a, b>
-
-        // public FsCheck.Fluent.SpecBuilder<a, b, c> Classify(System.Func<a, b, c, bool> filter, string name)
-        // Member of FsCheck.Fluent.SpecBuilder<a, b, c>
-
         /// <summary>
         /// TODO
         /// </summary>
@@ -127,6 +116,49 @@ namespace FsCheckUtils
             return specBuilder
                 .Classify(filter, ifTrue)
                 .Classify(a => !filter(a), ifFalse);
+        }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <typeparam name="TA">TODO</typeparam>
+        /// <typeparam name="TB">TODO</typeparam>
+        /// <param name="specBuilder">TODO</param>
+        /// <param name="filter">TODO</param>
+        /// <param name="ifTrue">TODO</param>
+        /// <param name="ifFalse">TODO</param>
+        /// <returns></returns>
+        public static SpecBuilder<TA, TB> Classify<TA, TB>(
+            this SpecBuilder<TA, TB> specBuilder,
+            Func<TA, TB, bool> filter,
+            string ifTrue,
+            string ifFalse)
+        {
+            return specBuilder
+                .Classify(filter, ifTrue)
+                .Classify((a, b) => !filter(a, b), ifFalse);
+        }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <typeparam name="TA">TODO</typeparam>
+        /// <typeparam name="TB">TODO</typeparam>
+        /// <typeparam name="TC">TODO</typeparam>
+        /// <param name="specBuilder">TODO</param>
+        /// <param name="filter">TODO</param>
+        /// <param name="ifTrue">TODO</param>
+        /// <param name="ifFalse">TODO</param>
+        /// <returns></returns>
+        public static SpecBuilder<TA, TB, TC> Classify<TA, TB, TC>(
+            this SpecBuilder<TA, TB, TC> specBuilder,
+            Func<TA, TB, TC, bool> filter,
+            string ifTrue,
+            string ifFalse)
+        {
+            return specBuilder
+                .Classify(filter, ifTrue)
+                .Classify((a, b, c) => !filter(a, b, c), ifFalse);
         }
     }
 }
