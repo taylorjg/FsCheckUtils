@@ -197,7 +197,7 @@ namespace FsCheckUtils
         /// the given condition is fulfilled.</returns>
         public static Gen<T> RetryUntil<T>(this Gen<T> gen, Func<T, bool> p)
         {
-            return gen.SelectMany(t => p(t) ? Gen.constant(t).Where(p) : gen.RetryUntil(p));
+            return gen.Where(p);
         }
 
         /// <summary>
@@ -470,14 +470,14 @@ namespace FsCheckUtils
         {
             get
             {
-            return from l1Upper in Gen.choose(0, int.MaxValue)
-                   from l1Lower in Gen.choose(0, int.MaxValue)
-                   from l2Upper in Gen.choose(0, int.MaxValue)
-                   from l2Lower in Gen.choose(0, int.MaxValue)
-                   let l1 = ((long) l1Upper << 32) + l1Lower
-                   let l2 = ((long) l2Upper << 32) + l2Lower
-                   from y in Gen.elements(new[] {'8', '9', 'a', 'b'})
-                   select MakeGuidFromBits(l1, l2, y);
+                return from l1Upper in Gen.choose(0, int.MaxValue)
+                    from l1Lower in Gen.choose(0, int.MaxValue)
+                    from l2Upper in Gen.choose(0, int.MaxValue)
+                    from l2Lower in Gen.choose(0, int.MaxValue)
+                    let l1 = ((long) l1Upper << 32) + l1Lower
+                    let l2 = ((long) l2Upper << 32) + l2Lower
+                    from y in Gen.elements(new[] {'8', '9', 'a', 'b'})
+                    select MakeGuidFromBits(l1, l2, y);
             }
         }
 

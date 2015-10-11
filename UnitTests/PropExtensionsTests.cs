@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using FsCheck;
+using FsCheck.Fluent;
 using FsCheckUtils;
 using Microsoft.FSharp.Core;
 using NUnit.Framework;
@@ -113,6 +114,39 @@ namespace UnitTests
 
         // TODO: add test(s) re Label
         // TODO: add test(s) re Implies
+        // TODO: add test(s) re Classify (non-fluent)
+        // TODO: add test re Classify (fluent 2 type paramerters)
+        // TODO: add test re Classify (fluent 3 type paramerters)
+
+        [Test]
+        public void ClassifyNonFluent()
+        {
+        }
+
+        [Test]
+        public void ClassifyFluentWithOneTypeParameter()
+        {
+            var spyingRunner = new SpyingRunner(Config.Default.Runner);
+            var configuration = Config.Default.WithRunner(spyingRunner).ToConfiguration();
+
+            Func<int, bool> assertion = n => true;
+            Func<int, bool> isEven = n => n%2 == 0;
+
+            Spec
+                .ForAny(assertion)
+                .Classify(isEven, "Even", "Odd")
+                .Check(configuration);
+
+            Assert.That(spyingRunner.TestResult.IsTrue, Is.True);
+            var testResultTrue = (TestResult.True) spyingRunner.TestResult;
+            var stamps = testResultTrue.Item.Stamps.ToList();
+            Assert.That(stamps.Count, Is.EqualTo(2));
+            Assert.That(stamps[0].Item1, Is.InRange(35, 65));
+            Assert.That(stamps[1].Item1, Is.InRange(35, 65));
+            var stampStrings = stamps.Select(s => s.Item2[0]).ToList();
+            var expectedStampStrings = new[] {"Even", "Odd"};
+            Assert.That(stampStrings, Is.EqualTo(expectedStampStrings).Or.EqualTo(expectedStampStrings.Reverse()));
+        }
 
         private static Property AndProperties(int n, Func<int, bool> leftPropertyFunc, Func<int, bool> rightPropertyFunc)
         {

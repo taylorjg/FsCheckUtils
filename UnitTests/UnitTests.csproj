@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SpyingRunner.cs" />
     <Compile Include="RegisterExtensionsTests.cs" />
     <Compile Include="ConfigurationExtensionsTests.cs" />
     <Compile Include="GenExtensionsTests.cs" />
