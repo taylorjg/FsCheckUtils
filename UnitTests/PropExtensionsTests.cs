@@ -133,9 +133,9 @@ namespace UnitTests
             var testResultTrue = (TestResult.True) spyingRunner.TestResult;
             var stamps = testResultTrue.Item.Stamps.ToList();
             Assert.That(stamps.Count, Is.EqualTo(2));
-            var stampStrings = stamps.Select(s => s.Item2[0]).ToList();
+            var actualStampStrings = stamps.Select(stamp => stamp.Item2.First());
             var expectedStampStrings = new[] {"Even", "Odd"};
-            Assert.That(stampStrings, Is.EqualTo(expectedStampStrings).Or.EqualTo(expectedStampStrings.Reverse()));
+            Assert.That(actualStampStrings, Is.EqualTo(expectedStampStrings).Or.EqualTo(expectedStampStrings.Reverse()));
         }
 
         [Test]
@@ -196,9 +196,9 @@ namespace UnitTests
             var testResultTrue = (TestResult.True)spyingRunner.TestResult;
             var stamps = testResultTrue.Item.Stamps.ToList();
             Assert.That(stamps.Count, Is.EqualTo(2));
-            var stampStrings = stamps.Select(s => s.Item2[0]).ToList();
+            var actualStampStrings = stamps.Select(stamp => stamp.Item2.First());
             var expectedStampStrings = new[] { "Even", "Odd" };
-            Assert.That(stampStrings, Is.EqualTo(expectedStampStrings).Or.EqualTo(expectedStampStrings.Reverse()));
+            Assert.That(actualStampStrings, Is.EqualTo(expectedStampStrings).Or.EqualTo(expectedStampStrings.Reverse()));
         }
 
         private static Property AndProperties(int n, Func<int, bool> leftPropertyFunc, Func<int, bool> rightPropertyFunc)
