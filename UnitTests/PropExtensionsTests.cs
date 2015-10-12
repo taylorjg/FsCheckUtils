@@ -118,8 +118,9 @@ namespace UnitTests
         [Test]
         public void ClassifyNonFluent()
         {
-            var spyingRunner = new SpyingRunner(Config.Default.Runner);
-            var config = Config.Default.WithRunner(spyingRunner);
+            var baseConfig = Config.Default;
+            var spyingRunner = new SpyingRunner(baseConfig.Runner);
+            var config = baseConfig.WithRunner(spyingRunner);
 
             Converter<int, Property> body = n =>
                 PropExtensions.Classify<Property>(IsEven(n), "Even", "Odd")
@@ -185,8 +186,9 @@ namespace UnitTests
 
         private static void ClassifyFluentCommon(Action<Configuration> action)
         {
-            var spyingRunner = new SpyingRunner(Config.Default.Runner);
-            var configuration = Config.Default.WithRunner(spyingRunner).ToConfiguration();
+            var baseConfiguration = Config.Default.ToConfiguration();
+            var spyingRunner = new SpyingRunner(baseConfiguration.Runner);
+            var configuration = baseConfiguration.WithRunner(spyingRunner);
 
             action(configuration);
 

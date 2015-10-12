@@ -17,7 +17,7 @@ namespace FsCheckUtils
         /// <typeparam name="T">TODO</typeparam>
         /// <param name="source">TODO</param>
         /// <returns>TODO</returns>
-        public static Gen<List<T>> Shuffle<T>(params T[] source)
+        public static Gen<List<T>> ShuffleValues<T>(params T[] source)
         {
             var n = source.Length;
 
@@ -52,9 +52,9 @@ namespace FsCheckUtils
         /// <typeparam name="T">TODO</typeparam>
         /// <param name="source">TODO</param>
         /// <returns>TODO</returns>
-        public static Gen<List<T>> Shuffle<T>(IEnumerable<T> source)
+        public static Gen<List<T>> ShuffleValues<T>(IEnumerable<T> source)
         {
-            return Shuffle(source.ToArray());
+            return ShuffleValues(source.ToArray());
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace FsCheckUtils
         /// <returns>TODO</returns>
         public static Gen<List<T>> ShuffleGenerators<T>(params Gen<T>[] gs)
         {
-            return Shuffle(gs).SelectMany(Any.SequenceOf);
+            return ShuffleValues(gs).SelectMany(Any.SequenceOf);
         }
 
         /// <summary>

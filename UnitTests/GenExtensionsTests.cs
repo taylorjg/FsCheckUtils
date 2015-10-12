@@ -70,16 +70,16 @@ namespace UnitTests
         }
 
         [Test]
-        public void Shuffle()
+        public void ShuffleValues()
         {
             var numbers = Enumerable.Range(1, 10).ToList();
-            var genShuffledNumbers = GenExtensions.Shuffle(numbers.AsEnumerable());
+            var genShuffledNumbers = GenExtensions.ShuffleValues(numbers.AsEnumerable());
             var shuffledNumberSamples = Gen.sample(1, 100, genShuffledNumbers).ToList();
             var comparer = new ShuffledNumbersSampleComparer();
             Assert.That(shuffledNumberSamples.Distinct(comparer).Count(), Is.EqualTo(shuffledNumberSamples.Count));
         }
 
-        // TODO: add test re Shuffle with params array of T
+        // TODO: add test re ShuffleValues with params array of T
         // TODO: add test re ShuffleGenerators with enumerable of T
         // TODO: add test re ShuffleGenerators with params array of T
 
