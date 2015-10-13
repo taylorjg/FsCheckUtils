@@ -112,8 +112,78 @@ namespace UnitTests
             Assert.That(ex.Message, Is.StringStarting("Falsifiable"));
         }
 
-        // TODO: add test(s) re Label
-        // TODO: add test(s) re Implies
+        [Test]
+        public void LabelOncePassingTest()
+        {
+            var baseConfig = Config.Default;
+            var spyingRunner = new SpyingRunner(baseConfig.Runner);
+            var config = baseConfig.WithRunner(spyingRunner);
+
+            Converter<int, Property> body = _ => PropExtensions.Label(Prop.ofTestable(true), "Label1");
+            var bodyFSharpFunc = FSharpFunc<int, Property>.FromConverter(body);
+            var property = Prop.forAll(Arb.from<int>(), bodyFSharpFunc);
+            Check.One(config, property);
+
+            Assert.That(spyingRunner.TestResult.IsTrue, Is.True);
+            var testResultTrue = (TestResult.True)spyingRunner.TestResult;
+            var labels = testResultTrue.Item.Labels.ToList();
+            Assert.That(labels.Count, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void LabelOnceFailingTest()
+        {
+            var baseConfig = Config.Default;
+            var spyingRunner = new SpyingRunner(baseConfig.Runner);
+            var config = baseConfig.WithRunner(spyingRunner);
+
+            Converter<int, Property> body = _ => PropExtensions.Label(Prop.ofTestable(false), "Label1");
+            var bodyFSharpFunc = FSharpFunc<int, Property>.FromConverter(body);
+            var property = Prop.forAll(Arb.from<int>(), bodyFSharpFunc);
+            Check.One(config, property);
+
+            Assert.That(spyingRunner.TestResult.IsFalse, Is.True);
+            var testResultFalse = (TestResult.False)spyingRunner.TestResult;
+            var labels = testResultFalse.Item1.Labels.ToList();
+            Assert.That(labels.Count, Is.EqualTo(1));
+            Assert.That(labels, Is.EqualTo(new[] {"Label1"}));
+        }
+
+        [Test]
+        public void LabelTwiceFailingTest()
+        {
+            var baseConfig = Config.Default;
+            var spyingRunner = new SpyingRunner(baseConfig.Runner);
+            var config = baseConfig.WithRunner(spyingRunner);
+
+            Converter<int, Property> body = _ => PropExtensions.Label(PropExtensions.Label(Prop.ofTestable(false), "Label1"), "Label2");
+            var bodyFSharpFunc = FSharpFunc<int, Property>.FromConverter(body);
+            var property = Prop.forAll(Arb.from<int>(), bodyFSharpFunc);
+            Check.One(config, property);
+
+            Assert.That(spyingRunner.TestResult.IsFalse, Is.True);
+            var testResultFalse = (TestResult.False)spyingRunner.TestResult;
+            var labels = testResultFalse.Item1.Labels.ToList();
+            Assert.That(labels.Count, Is.EqualTo(2));
+            Assert.That(labels, Is.EqualTo(new[] { "Label1", "Label2" }));
+        }
+
+        [Test]
+        public void Implies()
+        {
+            var baseConfig = Config.Default;
+            var spyingRunner = new SpyingRunner(baseConfig.Runner);
+            var config = baseConfig.WithRunner(spyingRunner).WithMaxTest(1);
+
+            var numAttempts = 0;
+            Converter<int, Property> body = _ => PropExtensions.Implies(++numAttempts > 3, Prop.ofTestable(true));
+            var bodyFSharpFunc = FSharpFunc<int, Property>.FromConverter(body);
+            var property = Prop.forAll(Arb.from<int>(), bodyFSharpFunc);
+            Check.One(config, property);
+
+            Assert.That(spyingRunner.TestResult.IsTrue, Is.True);
+            Assert.That(spyingRunner.NumCallsToOnArguments, Is.EqualTo(4));
+        }
 
         [Test]
         public void ClassifyNonFluent()

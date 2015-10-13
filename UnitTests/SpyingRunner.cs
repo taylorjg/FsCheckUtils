@@ -10,6 +10,7 @@ namespace UnitTests
         private readonly IRunner _runner;
 
         public TestResult TestResult { get; private set; }
+        public int NumCallsToOnArguments { get; private set; }
 
         public SpyingRunner(IRunner runner)
         {
@@ -23,6 +24,7 @@ namespace UnitTests
 
         public void OnArguments(int obj0, FSharpList<object> obj1, FSharpFunc<int, FSharpFunc<FSharpList<object>, string>> obj2)
         {
+            NumCallsToOnArguments++;
             _runner.OnArguments(obj0, obj1, obj2);
         }
 
