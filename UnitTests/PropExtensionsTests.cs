@@ -20,7 +20,7 @@ namespace UnitTests
             Func<int, bool> leftPropertyFunc = _ => true;
             Func<int, bool> rightPropertyFunc = _ => true;
             var andPropertiesFsFunc = FSharpFunc<int, Property>.FromConverter(
-                n => AndProperties(n, leftPropertyFunc, rightPropertyFunc));
+                n => AndPropertiesWithLabels(n, leftPropertyFunc, rightPropertyFunc));
             Check.QuickThrowOnFailure(andPropertiesFsFunc);
         }
 
@@ -32,7 +32,7 @@ namespace UnitTests
             Func<int, bool> leftPropertyFunc = _ => leftResult;
             Func<int, bool> rightPropertyFunc = _ => rightResult;
             var andPropertiesFsFunc = FSharpFunc<int, Property>.FromConverter(
-                n => AndProperties(n, leftPropertyFunc, rightPropertyFunc));
+                n => AndPropertiesWithLabels(n, leftPropertyFunc, rightPropertyFunc));
             var ex = Assert.Throws<Exception>(() => Check.QuickThrowOnFailure(andPropertiesFsFunc));
             Assert.That(ex.Message, Is.StringStarting("Falsifiable"));
         }
@@ -45,7 +45,7 @@ namespace UnitTests
             Func<int, bool> leftPropertyFunc = _ => leftResult;
             Func<int, bool> rightPropertyFunc = _ => rightResult;
             var orPropertiesFsFunc = FSharpFunc<int, Property>.FromConverter(
-                n => OrProperties(n, leftPropertyFunc, rightPropertyFunc));
+                n => OrPropertiesWithLabels(n, leftPropertyFunc, rightPropertyFunc));
             Check.QuickThrowOnFailure(orPropertiesFsFunc);
         }
 
@@ -55,7 +55,7 @@ namespace UnitTests
             Func<int, bool> leftPropertyFunc = _ => false;
             Func<int, bool> rightPropertyFunc = _ => false;
             var orPropertiesFsFunc = FSharpFunc<int, Property>.FromConverter(
-                n => OrProperties(n, leftPropertyFunc, rightPropertyFunc));
+                n => OrPropertiesWithLabels(n, leftPropertyFunc, rightPropertyFunc));
             var ex = Assert.Throws<Exception>(() => Check.QuickThrowOnFailure(orPropertiesFsFunc));
             Assert.That(ex.Message, Is.StringStarting("Falsifiable"));
         }
@@ -68,7 +68,7 @@ namespace UnitTests
         {
             var propertyFuncs = results.Select(result => new Func<int, bool>(_ => result));
             var andAllPropertiesFsFunc = FSharpFunc<int, Property>.FromConverter(
-                n => AndAllProperties(n, propertyFuncs));
+                n => AndAllPropertiesWithLabels(n, propertyFuncs));
             Check.QuickThrowOnFailure(andAllPropertiesFsFunc);
         }
 
@@ -82,7 +82,7 @@ namespace UnitTests
         {
             var propertyFuncs = results.Select(result => new Func<int, bool>(_ => result));
             var andAllPropertiesFsFunc = FSharpFunc<int, Property>.FromConverter(
-                n => AndAllProperties(n, propertyFuncs));
+                n => AndAllPropertiesWithLabels(n, propertyFuncs));
             var ex = Assert.Throws<Exception>(() => Check.QuickThrowOnFailure(andAllPropertiesFsFunc));
             Assert.That(ex.Message, Is.StringStarting("Falsifiable"));
         }
@@ -95,7 +95,7 @@ namespace UnitTests
         {
             var propertyFuncs = results.Select(result => new Func<int, bool>(_ => result));
             var orAllPropertiesFsFunc = FSharpFunc<int, Property>.FromConverter(
-                n => OrAllProperties(n, propertyFuncs));
+                n => OrAllPropertiesWithLabels(n, propertyFuncs));
             Check.QuickThrowOnFailure(orAllPropertiesFsFunc);
         }
 
@@ -107,7 +107,7 @@ namespace UnitTests
         {
             var propertyFuncs = results.Select(result => new Func<int, bool>(_ => result));
             var orAllPropertiesFsFunc = FSharpFunc<int, Property>.FromConverter(
-                n => OrAllProperties(n, propertyFuncs));
+                n => OrAllPropertiesWithLabels(n, propertyFuncs));
             var ex = Assert.Throws<Exception>(() => Check.QuickThrowOnFailure(orAllPropertiesFsFunc));
             Assert.That(ex.Message, Is.StringStarting("Falsifiable"));
         }
@@ -249,9 +249,80 @@ namespace UnitTests
             });
         }
 
+        [Test]
+        public void ChainParamsArrayOnly()
+        {
+            Converter<int, Property> body = n =>
+            {
+                var p1 = PropExtensions.Classify<Property>(IsEven(n), "Even", "Odd");
+                var p2 = PropExtensions.Classify<Property>(IsLarge(n), "Large", "Small");
+                var p3 = Prop.label<Property>("MyLabel");
+                var p4 = Prop.trivial<Property>(n == 0);
+                return PropExtensions.Chain(p1, p2, p3, p4);
+            };
+            var bodyFSharpFunc = FSharpFunc<int, Property>.FromConverter(body);
+            var property = Prop.forAll(Arb.from<int>(), bodyFSharpFunc);
+            Check.One(Config.QuickThrowOnFailure, property);
+        }
+
+        [Test]
+        public void ChainParamsArrayAndInitialBool()
+        {
+            Converter<int, Property> body = n =>
+            {
+                var p1 = PropExtensions.Classify<Property>(IsEven(n), "Even", "Odd");
+                var p2 = PropExtensions.Classify<Property>(IsLarge(n), "Large", "Small");
+                var p3 = Prop.label<Property>("MyLabel");
+                var p4 = Prop.trivial<Property>(n == 0);
+                return PropExtensions.Chain(true, p1, p2, p3, p4);
+            };
+            var bodyFSharpFunc = FSharpFunc<int, Property>.FromConverter(body);
+            var property = Prop.forAll(Arb.from<int>(), bodyFSharpFunc);
+            Check.One(Config.QuickThrowOnFailure, property);
+        }
+
+        [Test]
+        public void ChainParamsArrayAndInitialProperty()
+        {
+            Converter<int, Property> body = n =>
+            {
+                var p0 = Prop.ofTestable(true);
+                var p1 = PropExtensions.Classify<Property>(IsEven(n), "Even", "Odd");
+                var p2 = PropExtensions.Classify<Property>(IsLarge(n), "Large", "Small");
+                var p3 = Prop.label<Property>("MyLabel");
+                var p4 = Prop.trivial<Property>(n == 0);
+                return PropExtensions.Chain(p0, p1, p2, p3, p4);
+            };
+            var bodyFSharpFunc = FSharpFunc<int, Property>.FromConverter(body);
+            var property = Prop.forAll(Arb.from<int>(), bodyFSharpFunc);
+            Check.One(Config.QuickThrowOnFailure, property);
+        }
+
+        [Test]
+        public void ChainComplex()
+        {
+            Converter<int, Property> body = n =>
+                PropExtensions.Chain(
+                    PropExtensions.OrAll(
+                        PropExtensions.Label(PropExtensions.And(IsEven(n), IsLarge(n)), "Even and large"),
+                        PropExtensions.Label(PropExtensions.And(IsEven(n), !IsLarge(n)), "Even and small"),
+                        PropExtensions.Label(PropExtensions.And(!IsEven(n), IsLarge(n)), "Odd and large"),
+                        PropExtensions.Label(PropExtensions.And(!IsEven(n), !IsLarge(n)), "Odd and small")),
+                    Prop.label<Property>("MyLabel"),
+                    Prop.trivial<Property>(n == 0));
+            var bodyFSharpFunc = FSharpFunc<int, Property>.FromConverter(body);
+            var property = Prop.forAll(Arb.from<int>(), bodyFSharpFunc);
+            Check.One(Config.QuickThrowOnFailure, property);
+        }
+
         private static bool IsEven(int n)
         {
             return n % 2 == 0;
+        }
+
+        private static bool IsLarge(int n)
+        {
+            return n > 10;
         }
 
         private static void ClassifyFluentCommon(Action<Configuration> action)
@@ -271,27 +342,27 @@ namespace UnitTests
             Assert.That(actualStampStrings, Is.EqualTo(expectedStampStrings).Or.EqualTo(expectedStampStrings.Reverse()));
         }
 
-        private static Property AndProperties(int n, Func<int, bool> leftPropertyFunc, Func<int, bool> rightPropertyFunc)
+        private static Property AndPropertiesWithLabels(int n, Func<int, bool> leftPropertyFunc, Func<int, bool> rightPropertyFunc)
         {
             var p1 = PropExtensions.Label(leftPropertyFunc(n), "Left property");
             var p2 = PropExtensions.Label(rightPropertyFunc(n), "Right property");
             return PropExtensions.And(p1, p2);
         }
 
-        private static Property OrProperties(int n, Func<int, bool> leftPropertyFunc, Func<int, bool> rightPropertyFunc)
+        private static Property OrPropertiesWithLabels(int n, Func<int, bool> leftPropertyFunc, Func<int, bool> rightPropertyFunc)
         {
             var p1 = PropExtensions.Label(leftPropertyFunc(n), "Left property");
             var p2 = PropExtensions.Label(rightPropertyFunc(n), "Right property");
             return PropExtensions.Or(p1, p2);
         }
 
-        private static Property AndAllProperties(int n, IEnumerable<Func<int, bool>> propertyFuncs)
+        private static Property AndAllPropertiesWithLabels(int n, IEnumerable<Func<int, bool>> propertyFuncs)
         {
             var properties = propertyFuncs.Select((pf, index) => PropExtensions.Label(pf(n), string.Format("Property[{0}]", index)));
             return PropExtensions.AndAll(properties.ToArray());
         }
 
-        private static Property OrAllProperties(int n, IEnumerable<Func<int, bool>> propertyFuncs)
+        private static Property OrAllPropertiesWithLabels(int n, IEnumerable<Func<int, bool>> propertyFuncs)
         {
             var properties = propertyFuncs.Select((pf, index) => PropExtensions.Label(pf(n), string.Format("Property[{0}]", index)));
             return PropExtensions.OrAll(properties.ToArray());

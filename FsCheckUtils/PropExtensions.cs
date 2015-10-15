@@ -92,7 +92,7 @@ namespace FsCheckUtils
         /// <param name="condition">TODO</param>
         /// <param name="ifTrue">TODO</param>
         /// <param name="ifFalse">TODO</param>
-        /// <returns></returns>
+        /// <returns>TODO</returns>
         public static FSharpFunc<TTestable, Property> Classify<TTestable>(bool condition, string ifTrue, string ifFalse)
         {
             return Prop.classify<TTestable>(true, condition ? ifTrue : ifFalse);
@@ -106,7 +106,7 @@ namespace FsCheckUtils
         /// <param name="filter">TODO</param>
         /// <param name="ifTrue">TODO</param>
         /// <param name="ifFalse">TODO</param>
-        /// <returns></returns>
+        /// <returns>TODO</returns>
         public static SpecBuilder<TA> Classify<TA>(
             this SpecBuilder<TA> specBuilder,
             Func<TA, bool> filter,
@@ -127,7 +127,7 @@ namespace FsCheckUtils
         /// <param name="filter">TODO</param>
         /// <param name="ifTrue">TODO</param>
         /// <param name="ifFalse">TODO</param>
-        /// <returns></returns>
+        /// <returns>TODO</returns>
         public static SpecBuilder<TA, TB> Classify<TA, TB>(
             this SpecBuilder<TA, TB> specBuilder,
             Func<TA, TB, bool> filter,
@@ -149,7 +149,7 @@ namespace FsCheckUtils
         /// <param name="filter">TODO</param>
         /// <param name="ifTrue">TODO</param>
         /// <param name="ifFalse">TODO</param>
-        /// <returns></returns>
+        /// <returns>TODO</returns>
         public static SpecBuilder<TA, TB, TC> Classify<TA, TB, TC>(
             this SpecBuilder<TA, TB, TC> specBuilder,
             Func<TA, TB, TC, bool> filter,
@@ -159,6 +159,38 @@ namespace FsCheckUtils
             return specBuilder
                 .Classify(filter, ifTrue)
                 .Classify((a, b, c) => !filter(a, b, c), ifFalse);
+        }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <param name="ps">TODO</param>
+        /// <returns>TODO</returns>
+        public static Property Chain(params FSharpFunc<Property, Property>[] ps)
+        {
+            return Chain(true, ps);
+        }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <param name="b">TODO</param>
+        /// <param name="ps">TODO</param>
+        /// <returns>TODO</returns>
+        public static Property Chain(bool b, params FSharpFunc<Property, Property>[] ps)
+        {
+            return Chain(Prop.ofTestable(b), ps);
+        }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <param name="p0">TODO</param>
+        /// <param name="ps">TODO</param>
+        /// <returns>TODO</returns>
+        public static Property Chain(Property p0, params FSharpFunc<Property, Property>[] ps)
+        {
+            return ps.Aggregate(p0, (acc, p) => p.Invoke(acc));
         }
     }
 }
