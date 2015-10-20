@@ -315,6 +315,24 @@ namespace UnitTests
             Check.One(Config.QuickThrowOnFailure, property);
         }
 
+        [Test]
+        public void ForAllWithTwoArbs()
+        {
+            var arb1 = Arb.from<int>();
+            var arb2 = Arb.from<string>();
+            var p = PropExtensions.ForAll(arb1, arb2, (n, s) => Prop.ofTestable(true));
+            Check.VerboseThrowOnFailure(p);
+        }
+
+        [Test]
+        public void ForAllWithTwoGens()
+        {
+            var g1 = Arb.generate<int>();
+            var g2 = Arb.generate<string>();
+            var p = PropExtensions.ForAll(g1, g2, (n, s) => Prop.ofTestable(true));
+            Check.VerboseThrowOnFailure(p);
+        }
+
         private static bool IsEven(int n)
         {
             return n % 2 == 0;

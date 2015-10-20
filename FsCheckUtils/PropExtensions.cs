@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net.NetworkInformation;
 using FsCheck;
 using FsCheck.Fluent;
 using Microsoft.FSharp.Core;
@@ -86,10 +87,10 @@ namespace FsCheckUtils
         }
 
         /// <summary>
-        /// TODO
+        /// Classify test cases combinator with true ansd false options.
         /// </summary>
-        /// <typeparam name="TTestable">TODO</typeparam>
-        /// <param name="condition">TODO</param>
+        /// <typeparam name="TTestable">Type of the property.</typeparam>
+        /// <param name="condition">If the condition is true then the test case is assigned the classification <paramref name="ifTrue" /> otherwise <paramref name="ifFalse" />.</param>
         /// <param name="ifTrue">TODO</param>
         /// <param name="ifFalse">TODO</param>
         /// <returns>TODO</returns>
@@ -191,6 +192,70 @@ namespace FsCheckUtils
         public static Property Chain(Property p0, params FSharpFunc<Property, Property>[] ps)
         {
             return ps.Aggregate(p0, (acc, p) => p.Invoke(acc));
+        }
+
+        public static Property ForAll<T1, TTestable>(Arbitrary<T1> arb1, Func<T1, TTestable> p)
+        {
+            return Prop.forAll(arb1, FSharpFunc<T1, TTestable>.FromConverter(v1 => p(v1)));
+        }
+
+        public static Property ForAll<T1, TTestable>(Gen<T1> g1, Func<T1, TTestable> p)
+        {
+            return ForAll(Arb.fromGen(g1), p);
+        }
+
+        public static Property ForAll<T1, T2, TTestable>(Arbitrary<T1> arb1, Arbitrary<T2> arb2, Func<T1, T2, TTestable> p)
+        {
+            return
+                Prop.forAll(arb1, FSharpFunc<T1, Property>.FromConverter(v1 =>
+                    Prop.forAll(arb2, FSharpFunc<T2, TTestable>.FromConverter(v2 =>
+                        p(v1, v2)))));
+        }
+
+        public static Property ForAll<T1, T2, TTestable>(Gen<T1> g1, Gen<T2> g2, Func<T1, T2, TTestable> p)
+        {
+            return ForAll(
+                Arb.fromGen(g1),
+                Arb.fromGen(g2),
+                p);
+        }
+
+        public static Property ForAll<T1, T2, T3, TTestable>(Arbitrary<T1> arb1, Arbitrary<T2> arb2, Arbitrary<T3> arb3, Func<T1, T2, T3, TTestable> p)
+        {
+            return
+                Prop.forAll(arb1, FSharpFunc<T1, Property>.FromConverter(v1 =>
+                    Prop.forAll(arb2, FSharpFunc<T2, Property>.FromConverter(v2 =>
+                        Prop.forAll(arb3, FSharpFunc<T3, TTestable>.FromConverter(v3 =>
+                            p(v1, v2, v3)))))));
+        }
+
+        public static Property ForAll<T1, T2, T3, TTestable>(Gen<T1> g1, Gen<T2> g2, Gen<T3> g3, Func<T1, T2, T3, TTestable> p)
+        {
+            return ForAll(
+                Arb.fromGen(g1),
+                Arb.fromGen(g2),
+                Arb.fromGen(g3),
+                p);
+        }
+
+        public static Property ForAll<T1, T2, T3, T4, TTestable>(Arbitrary<T1> arb1, Arbitrary<T2> arb2, Arbitrary<T3> arb3, Arbitrary<T4> arb4, Func<T1, T2, T3, T4, TTestable> p)
+        {
+            return
+                Prop.forAll(arb1, FSharpFunc<T1, Property>.FromConverter(v1 =>
+                    Prop.forAll(arb2, FSharpFunc<T2, Property>.FromConverter(v2 =>
+                        Prop.forAll(arb3, FSharpFunc<T3, Property>.FromConverter(v3 =>
+                            Prop.forAll(arb4, FSharpFunc<T4, TTestable>.FromConverter(v4 =>
+                                p(v1, v2, v3, v4)))))))));
+        }
+
+        public static Property ForAll<T1, T2, T3, T4, TTestable>(Gen<T1> g1, Gen<T2> g2, Gen<T3> g3, Gen<T4> g4, Func<T1, T2, T3, T4, TTestable> p)
+        {
+            return ForAll(
+                Arb.fromGen(g1),
+                Arb.fromGen(g2),
+                Arb.fromGen(g3),
+                Arb.fromGen(g4),
+                p);
         }
     }
 }
