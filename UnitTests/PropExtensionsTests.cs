@@ -333,6 +333,13 @@ namespace UnitTests
             Check.VerboseThrowOnFailure(p);
         }
 
+        [Test]
+        public void ForAllWithFuncOfThreeValues()
+        {
+            var p = PropExtensions.ForAll((Func<int, List<int>, string, bool>) ((v1, v2, v3) => true));
+            Check.VerboseThrowOnFailure(p);
+        }
+
         private static bool IsEven(int n)
         {
             return n % 2 == 0;

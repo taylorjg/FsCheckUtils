@@ -257,5 +257,13 @@ namespace FsCheckUtils
                 Arb.fromGen(g4),
                 p);
         }
+
+        public static Property ForAll<T1, T2, T3, TTestable>(Func<T1, T2, T3, TTestable> p)
+        {
+            var g1 = Arb.generate<T1>();
+            var g2 = Arb.generate<T2>();
+            var g3 = Arb.generate<T3>();
+            return ForAll(g1, g2, g3, p);
+        }
     }
 }
